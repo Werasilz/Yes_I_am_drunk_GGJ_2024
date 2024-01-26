@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,8 +27,23 @@ public class EnemyController : MonoBehaviour
         _nameText.text = _enemyProfile.profileName;
     }
 
-    public void SetTrigger(bool isTrigger)
+    public void SetTriggerEnter()
     {
-        _isTrigger = isTrigger;
+        _isTrigger = transform;
+
+        QuestionUIController.Instance.SetActiveContent(true);
+        QuestionUIController.Instance.SetCanvasGroupAlpha(1);
+        QuestionUIController.Instance.SetEnemyProfile(_enemyProfile);
+        QuestionUIController.Instance.SetQuestion();
+    }
+
+    public void SetTriggerExit()
+    {
+        QuestionUIController.Instance.SetCanvasGroupAlpha(0);
+        DOVirtual.DelayedCall(GlobalConfig.DELAY_ALPHA_DEFAULT, () =>
+        {
+            QuestionUIController.Instance.SetActiveContent(false);
+            _isTrigger = false;
+        });
     }
 }

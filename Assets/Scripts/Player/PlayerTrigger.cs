@@ -18,8 +18,20 @@ public class PlayerTrigger : MonoBehaviour
 
             if (enemyController.IsTrigger == false)
             {
-                enemyController.SetTrigger(true);
-                PrepareBattle(enemyController.EnemyProfile);
+                enemyController.SetTriggerEnter();
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            EnemyController enemyController = other.GetComponent<EnemyController>();
+
+            if (enemyController.IsTrigger)
+            {
+                enemyController.SetTriggerExit();
             }
         }
     }

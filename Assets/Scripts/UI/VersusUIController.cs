@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +15,11 @@ public class VersusUIController : SceneSingleton<VersusUIController>
     [Header("Enemy Profile")]
     [SerializeField] private Image _enemyImage;
     [SerializeField] private TMP_Text _enemyNameText;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public void SetActiveContent(bool isActive)
     {
@@ -40,13 +42,6 @@ public class VersusUIController : SceneSingleton<VersusUIController>
 
     public void SetCanvasGroupAlpha(float alphaTarget)
     {
-        float value = _canvasGroup.alpha;
-        DOTween.To(() => value, x => value = x, alphaTarget, 1.5f).OnUpdate(() =>
-        {
-            _canvasGroup.alpha = value;
-        }).OnComplete(() =>
-        {
-            _canvasGroup.alpha = alphaTarget;
-        });
+        Utility.SetCanvasGroupAlpha(_canvasGroup, alphaTarget);
     }
 }
