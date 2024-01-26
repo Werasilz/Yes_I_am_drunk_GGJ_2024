@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Profile")]
     [SerializeField] private EnemyProfileData _enemyProfileData;
+    private Profile _enemyProfile;
+    public Profile EnemyProfile => _enemyProfile;
 
     [Header("User Interface")]
     [SerializeField] private Image _profileImage;
@@ -19,8 +21,9 @@ public class EnemyController : MonoBehaviour
     {
         // Set Profile Image and Name
         int randomIndex = Random.Range(0, _enemyProfileData.profiles.Length);
-        _profileImage.sprite = _enemyProfileData.profiles[randomIndex].sprite;
-        _nameText.text = _enemyProfileData.profiles[randomIndex].profileName;
+        _enemyProfile = _enemyProfileData.profiles[randomIndex];
+        _profileImage.sprite = _enemyProfile.sprite;
+        _nameText.text = _enemyProfile.profileName;
     }
 
     public void SetTrigger(bool isTrigger)

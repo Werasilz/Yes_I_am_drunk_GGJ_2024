@@ -1,10 +1,14 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour
 {
-    [Header("Timer")]
-    [SerializeField] private TimeCounter _beginBattleUITimeCounter;
-    [SerializeField] private TimeCounter _loadBattleSceneTimeCounter;
+    [Header("Profile")]
+    [SerializeField] private Profile _playerProfile;
+
+    [Header("Delay")]
+    [SerializeField] private float _delayToShowVersusCanvas = 1f;
+    [SerializeField] private float _delayToLoadBattleScene = 3f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,30 +19,29 @@ public class PlayerTrigger : MonoBehaviour
             if (enemyController.IsTrigger == false)
             {
                 enemyController.SetTrigger(true);
-                PrepareBattle();
+                PrepareBattle(enemyController.EnemyProfile);
             }
         }
     }
 
-    private void PrepareBattle()
+    private void PrepareBattle(Profile enemyProfile)
     {
-        // To Do Show UI
         PostProcessManager.Instance.SetChromaticAberration();
         PostProcessManager.Instance.SetLensDistortion();
         PostProcessManager.Instance.SetVignette();
 
-        void OnLoadBattleSceneTimeCounterComplete()
+        DOVirtual.DelayedCall(_delayToShowVersusCanvas, () =>
         {
-            SceneLoaderManager.Instance.LoadBattleScene();
-        }
-
-        void OnBeginBattleUITimeCounterComplete()
+            VersusUIController.Instance.SetActiveContent(true);
+            VersusUIController.Instance.SetVersusProfile(_playerProfile, enemyProfile);
+            VersusUIController.Instance.PlayAnimation();
+            VersusUIController.Instance.SetCanvasGroupAlpha(1);
+        }).OnComplete(() =>
         {
-            // Wait for begin load scene
-            _loadBattleSceneTimeCounter.StartCounting(this, OnLoadBattleSceneTimeCounterComplete, null);
-        }
-
-        // Wait for UI
-        _beginBattleUITimeCounter.StartCounting(this, OnBeginBattleUITimeCounterComplete, null);
+            DOVirtual.DelayedCall(_delayToLoadBattleScene, () =>
+            {
+                SceneLoaderManager.Instance.LoadBattleScene();
+            });
+        });
     }
 }
