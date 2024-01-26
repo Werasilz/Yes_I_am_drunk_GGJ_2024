@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Status")]
     [SerializeField] private bool _isTrigger;
+    public bool IsTrigger => _isTrigger;
 
     void Start()
     {

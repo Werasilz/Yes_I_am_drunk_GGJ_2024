@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LV_ExploreGameplay.unity
     guid: de1caea9a2f036644ad5696e2aaccb7f
+  - enabled: 1
+    path: Assets/Scenes/Battle Scene.unity
+    guid: e2b08f8994e7c6f48a95fb5f62b62344
   m_configObjects: {}
