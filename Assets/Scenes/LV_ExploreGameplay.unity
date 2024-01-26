@@ -1834,7 +1834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f4ff111996ed2428718e42acb2817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyProfileData: {fileID: 0}
+  _enemyProfileData: {fileID: 11400000, guid: 04113fda899bfa941b1801b7215d8488, type: 2}
   _profileImage: {fileID: 1027014929}
   _nameText: {fileID: 1192456092}
   _isTrigger: 0
@@ -2040,7 +2040,7 @@ SceneRoots:
   - {fileID: 1402827283}
   - {fileID: 1762682258}
   - {fileID: 746329221}
-  - {fileID: 1327619677}
-  - {fileID: 2087077929}
   - {fileID: 1317154772}
   - {fileID: 1963946114}
+  - {fileID: 2087077929}
+  - {fileID: 1327619677}
