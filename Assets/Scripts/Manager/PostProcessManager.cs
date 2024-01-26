@@ -18,9 +18,11 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
     [Header("Profile Animate")]
     [SerializeField] private ProfileAnimate _chromaticAberrationIntensity;
     [SerializeField] private ProfileAnimate _lensDistortionIntensity;
+    [SerializeField] private ProfileAnimate _vignetteIntensity;
 
     private ChromaticAberration _chromaticAberration;
     private LensDistortion _lensDistortion;
+    private Vignette _vignette;
 
     protected override void Awake()
     {
@@ -34,6 +36,10 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
         }
 
         if (_postProcessVolume.profile.TryGet<LensDistortion>(out _lensDistortion))
+        {
+        }
+
+        if (_postProcessVolume.profile.TryGet<Vignette>(out _vignette))
         {
         }
     }
@@ -61,6 +67,19 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
         }).OnComplete(() =>
         {
             _lensDistortion.intensity.value = _lensDistortionIntensity.target;
+        });
+    }
+
+    [ContextMenu("SetVignette")]
+    public void SetVignette()
+    {
+        float value = _vignette.intensity.value;
+        DOTween.To(() => value, x => value = x, _vignetteIntensity.target, _vignetteIntensity.duration).OnUpdate(() =>
+        {
+            _vignette.intensity.value = value;
+        }).OnComplete(() =>
+        {
+            _vignette.intensity.value = _vignetteIntensity.target;
         });
     }
 }
