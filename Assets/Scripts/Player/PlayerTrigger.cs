@@ -3,7 +3,8 @@ using UnityEngine;
 public class PlayerTrigger : MonoBehaviour
 {
     [Header("Timer")]
-    [SerializeField] private TimeCounter _beginBattleTimeCounter;
+    [SerializeField] private TimeCounter _beginBattleUITimeCounter;
+    [SerializeField] private TimeCounter _loadBattleSceneTimeCounter;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,14 +15,30 @@ public class PlayerTrigger : MonoBehaviour
             if (enemyController.IsTrigger == false)
             {
                 enemyController.SetTrigger(true);
-
-                void OnComplete()
-                {
-                    SceneLoaderManager.Instance.LoadBattleScene();
-                }
-
-                _beginBattleTimeCounter.StartCounting(this, OnComplete, null);
+                PrepareBattle();
             }
         }
+    }
+
+    private void PrepareBattle()
+    {
+        // To Do Show UI
+        PostProcessManager.Instance.SetChromaticAberration();
+        PostProcessManager.Instance.SetLensDistortion();
+        PostProcessManager.Instance.SetVignette();
+
+        void OnLoadBattleSceneTimeCounterComplete()
+        {
+            SceneLoaderManager.Instance.LoadBattleScene();
+        }
+
+        void OnBeginBattleUITimeCounterComplete()
+        {
+            // Wait for begin load scene
+            _loadBattleSceneTimeCounter.StartCounting(this, OnLoadBattleSceneTimeCounterComplete, null);
+        }
+
+        // Wait for UI
+        _beginBattleUITimeCounter.StartCounting(this, OnBeginBattleUITimeCounterComplete, null);
     }
 }
