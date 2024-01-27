@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
 
     public void SetTriggerEnter()
     {
-        _isTrigger = transform;
+        _isTrigger = true;
         _enemyAI.SetStopMove(true);
         GameManager.Instance.isNPCAskQuestion = true;
 
@@ -46,13 +46,13 @@ public class EnemyController : MonoBehaviour
         QuestionUIController.Instance.SetQuestion();
     }
 
-    public void SetTriggerExit()
-    {
-        QuestionUIController.Instance.SetCanvasGroupAlpha(0);
-        DOVirtual.DelayedCall(GlobalConfig.DELAY_ALPHA_DEFAULT, () =>
-        {
-            QuestionUIController.Instance.SetActiveContent(false);
-            _isTrigger = false;
-        });
-    }
+    // public void SetTriggerExit()
+    // {
+    //     QuestionUIController.Instance.SetCanvasGroupAlpha(0);
+    //     DOVirtual.DelayedCall(GlobalConfig.DELAY_ALPHA_DEFAULT, () =>
+    //     {
+    //         QuestionUIController.Instance.SetActiveContent(false);
+    //         _isTrigger = false;
+    //     });
+    // }
 }

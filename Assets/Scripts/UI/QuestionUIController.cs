@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,6 +40,13 @@ public class QuestionUIController : SceneSingleton<QuestionUIController>
 
     public void SetCanvasGroupAlpha(float alphaTarget)
     {
-        Utility.SetCanvasGroupAlpha(_canvasGroup, alphaTarget);
+        float value = _canvasGroup.alpha;
+        DOTween.To(() => value, x => value = x, alphaTarget, GlobalConfig.DELAY_ALPHA_DEFAULT).OnUpdate(() =>
+        {
+            _canvasGroup.alpha = value;
+        }).OnComplete(() =>
+        {
+            _canvasGroup.alpha = alphaTarget;
+        });
     }
 }

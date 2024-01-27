@@ -50,6 +50,16 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
         }
     }
 
+    public void Execute()
+    {
+        print("Execute Post Process");
+        SetChromaticAberration();
+        SetLensDistortion();
+        SetVignette();
+        SetDepthOfField();
+    }
+
+
     [ContextMenu("SetChromaticAberration")]
     public void SetChromaticAberration()
     {

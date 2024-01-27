@@ -57,24 +57,22 @@ public class PlayerTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            EnemyController enemyController = other.GetComponent<EnemyController>();
+            // EnemyController enemyController = other.GetComponent<EnemyController>();
             _enemyController = null;
 
-            if (enemyController.IsTrigger)
-            {
-                enemyController.SetTriggerExit();
-            }
+            // if (enemyController.IsTrigger)
+            // {
+            //     enemyController.SetTriggerExit();
+            // }
         }
     }
 
     private void PrepareBattle(Profile enemyProfile)
     {
+        print($"PrepareBattle Enemy ID:{_enemyController.EnemyID}");
         GameManager.Instance.enemyBattleID = _enemyController.EnemyID;
 
-        PostProcessManager.Instance.SetChromaticAberration();
-        PostProcessManager.Instance.SetLensDistortion();
-        PostProcessManager.Instance.SetVignette();
-        PostProcessManager.Instance.SetDepthOfField();
+        PostProcessManager.Instance.Execute();
 
         DOVirtual.DelayedCall(_delayToShowVersusCanvas, () =>
         {

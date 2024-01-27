@@ -92,12 +92,14 @@ public class EnemyAI : MonoBehaviour
         {
             float value = _animator.GetFloat("Speed");
             DOTween.To(() => value, x => value = x, 0, 0.25f).OnUpdate(() =>
+            DOTween.To(() => value, x => value = x, 0, 0.5f).OnUpdate(() =>
             {
                 _animator.SetFloat("Speed", value);
+            }).OnComplete(() =>
+            {
+                Vector3 lookAt = new(0, PlayerTrigger.Instance.transform.position.y, 0);
+                transform.DODynamicLookAt(lookAt, 1f);
             });
-
-            Vector3 lookAt = new(0, PlayerTrigger.Instance.transform.position.y, 0);
-            transform.DODynamicLookAt(lookAt, 1f);
         }
     }
 }
