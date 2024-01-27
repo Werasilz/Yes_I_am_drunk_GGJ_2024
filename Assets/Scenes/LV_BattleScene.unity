@@ -154,8 +154,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1468872814}
-  - {fileID: 1717251356}
   - {fileID: 1477515482}
+  - {fileID: 1717251356}
   - {fileID: 1386401741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characters:
   - {fileID: 1468872815}
-  - {fileID: 1717251357}
   - {fileID: 1477515483}
+  - {fileID: 1717251357}
   - {fileID: 1386401742}
 --- !u!1 &427532588
 GameObject:
@@ -1238,7 +1238,7 @@ PrefabInstance:
     - target: {fileID: 856601670117699726, guid: b14953694d54eea4eb66f453e525024c,
         type: 3}
       propertyPath: m_Name
-      value: 2_TT_demo_zombie
+      value: 1_TT_demo_zombie
       objectReference: {fileID: 0}
     - target: {fileID: 856601670117699726, guid: b14953694d54eea4eb66f453e525024c,
         type: 3}
@@ -1570,7 +1570,7 @@ PrefabInstance:
     - target: {fileID: 7478225697116208144, guid: 6fb37f825ee63264b9c2600bf1a52006,
         type: 3}
       propertyPath: m_Name
-      value: 1_TT_demo_male_A
+      value: 2_TT_demo_male_A
       objectReference: {fileID: 0}
     - target: {fileID: 7478225697116208144, guid: 6fb37f825ee63264b9c2600bf1a52006,
         type: 3}

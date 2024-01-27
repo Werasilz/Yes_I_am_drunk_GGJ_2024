@@ -36,8 +36,8 @@ Transform:
   - {fileID: 3385536261949934694}
   - {fileID: 5857856812037887141}
   - {fileID: 7806776167911871535}
-  - {fileID: 4670961945516857609}
   - {fileID: 3141943827597231948}
+  - {fileID: 4670961945516857609}
   - {fileID: 8985968232366778252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,8 +60,8 @@ MonoBehaviour:
   _isTrigger: 0
   _characters:
   - {fileID: 7806776167911442511}
-  - {fileID: 4670961945516557673}
   - {fileID: 3141943827597466412}
+  - {fileID: 4670961945516557673}
   - {fileID: 8985968232366947308}
 --- !u!114 &2470918242045218911
 MonoBehaviour:
@@ -696,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 856601670117699726, guid: b14953694d54eea4eb66f453e525024c,
         type: 3}
       propertyPath: m_Name
-      value: 2_TT_demo_zombie
+      value: 1_TT_demo_zombie
       objectReference: {fileID: 0}
     - target: {fileID: 856601670117699726, guid: b14953694d54eea4eb66f453e525024c,
         type: 3}
@@ -781,7 +781,7 @@ PrefabInstance:
     - target: {fileID: 7478225697116208144, guid: 6fb37f825ee63264b9c2600bf1a52006,
         type: 3}
       propertyPath: m_Name
-      value: 1_TT_demo_male_A
+      value: 2_TT_demo_male_A
       objectReference: {fileID: 0}
     - target: {fileID: 7478225697116208144, guid: 6fb37f825ee63264b9c2600bf1a52006,
         type: 3}
