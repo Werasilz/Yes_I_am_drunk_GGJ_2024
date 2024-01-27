@@ -156,7 +156,7 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            if (GameManager.Instance.isNPCAskQuestion == false)
+            if (GameManager.Instance.isStopPlayerMove == false)
             {
                 JumpAndGravity();
                 GroundedCheck();

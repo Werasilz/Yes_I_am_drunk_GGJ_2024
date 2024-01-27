@@ -17,9 +17,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private bool _isTrigger;
     public bool IsTrigger => _isTrigger;
 
-    [Header("Character")]
-    [SerializeField] private GameObject[] _characters;
-
     private EnemyAI _enemyAI;
 
     void Start()
@@ -35,7 +32,7 @@ public class EnemyController : MonoBehaviour
     {
         _isTrigger = true;
         _enemyAI.SetStopMove(true);
-        GameManager.Instance.isNPCAskQuestion = true;
+        GameManager.Instance.isStopPlayerMove = true;
 
         QuestionUIController.Instance.SetActiveContent(true);
         QuestionUIController.Instance.SetCanvasGroupAlpha(1);

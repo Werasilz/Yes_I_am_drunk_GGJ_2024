@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa866b5c4144494f9a477cc8b15f441, type: 3}
   m_Name: Enemy_3
   m_EditorClassIdentifier: 
-  ID: 2
-  profileName: Joe
+  ID: 3
+  profileName: Ashley
   dialogue: 
-  sprite: {fileID: 21300000, guid: a6826a0d1cf5a1c488861c96a2c11569, type: 3}
-  turnLimit: 7
-  health: 13
+  sprite: {fileID: 21300000, guid: f4365456ff5093d4f9a5b91309a784c5, type: 3}
