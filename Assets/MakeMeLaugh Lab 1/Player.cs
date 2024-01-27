@@ -8,10 +8,11 @@ namespace Lab1
 {
     public class Player : MonoBehaviour
     {
+        public List<Card> CardHandleOnHand;
         public List<Card> CurrentSelectedCard;
-
         public List<PlayedCardData> playedCardDatas;
 
+        public Deck deck;
 
         // ! Debuggg
         private float startPersistantValue = 1f;
@@ -20,13 +21,29 @@ namespace Lab1
 
         // ! Debuggg
 
+        private void Start()
+        {
+            deck.IntializeDeck();
+
+            Initialize();
+
+        }
+
+        public void Initialize()
+        {
+            for (int i = 0; i < CardHandleOnHand.Count; i++)
+            {
+                CardData data = deck.DrawCard();
+                CardHandleOnHand[i].InitalizeNewCardData(data);
+            }
+        }
 
         public bool CanSelectThisCard(Card card)
         {
             if (CurrentSelectedCard.Count == 0)
                 return true;
 
-            if (CurrentSelectedCard[0].cardType == card.cardType)
+            if (CurrentSelectedCard[0].cardData.CardType == card.cardData.CardType)
                 return true;
 
             return false;
@@ -79,7 +96,7 @@ namespace Lab1
             }
 
             // Setup Last Card Type Value
-            playedData.lastCardType = CurrentSelectedCard[0].cardType;
+            playedData.lastCardType = CurrentSelectedCard[0].cardData.CardType;
 
             // Setup Stack Bonus Value
             playedData.stackBonusValue = GetStackBonus(cardDataIndex);
@@ -91,6 +108,12 @@ namespace Lab1
             playedData.totalValue = GetTotal(playedData, cardDataIndex);
 
             playedCardDatas.Add(playedData);
+
+            // Initialize new Card with Used card
+            for (int i = 0; i < CurrentSelectedCard.Count; i++)
+            {
+                CurrentSelectedCard[i].InitalizeNewCardData(deck.DrawCard());
+            }
 
             DeselectAllCard();
         }
@@ -119,7 +142,7 @@ namespace Lab1
             if (playedCardDatas.Count == 0)
                 return false;
 
-            if (CurrentSelectedCard[0].cardType == playedCardDatas[playedCardDatas.Count - 1].lastCardType)
+            if (CurrentSelectedCard[0].cardData.CardType == playedCardDatas[playedCardDatas.Count - 1].lastCardType)
                 return true;
 
             return false;

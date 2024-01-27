@@ -2,15 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Lab1
 {
     public class Card : MonoBehaviour, IPointerClickHandler
     {
-        public CardType cardType;
+        public CardData cardData;
         private Player player => GetComponentInParent<Player>();
         public bool selected = false;
+        [SerializeField] Image currentImage;
         [SerializeField] GameObject highLightColor;
+
+        public void InitalizeNewCardData(CardData cardData)
+        {
+            this.cardData = cardData;
+            currentImage.color = cardData.CardColor;
+        }
+
         public void OnPointerClick(PointerEventData eventData)
         {
             ToggleSelect();
