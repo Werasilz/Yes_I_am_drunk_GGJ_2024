@@ -15,7 +15,8 @@ namespace Lab1
         [SerializeField] Image currentImage;
         [SerializeField] GameObject highLightColor;
 
-        bool isDelay;
+        bool isDelay1;
+        bool isDelay2;
 
         public void InitalizeNewCardData(CardData cardData)
         {
@@ -35,13 +36,19 @@ namespace Lab1
 
         private void SelectThisCard(bool isSelect)
         {
-            if (isDelay) return;
+            if (isDelay1 || isDelay2) return;
 
-            isDelay = true;
+            isDelay1 = true;
+            isDelay2 = true;
 
-            DOVirtual.DelayedCall(0.1f, () =>
+            DOVirtual.DelayedCall(0.05f, () =>
             {
-                isDelay = false;
+                isDelay1 = false;
+
+                DOVirtual.DelayedCall(0.05f, () =>
+                {
+                    isDelay2 = false;
+                });
 
                 if (player.CanSelectThisCard(this) == false) return;
 
