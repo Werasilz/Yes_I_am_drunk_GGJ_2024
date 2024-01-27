@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fff25d8df59cfc4783f603c71ded019, type: 3}
   m_Name: Card Data Blue 4
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: 
+  <CardName>k__BackingField: officer
   <CardDescription>k__BackingField: 
   <CardType>k__BackingField: 2
   <CardColor>k__BackingField: {r: 0.54905653, g: 0.86719656, b: 1, a: 1}
