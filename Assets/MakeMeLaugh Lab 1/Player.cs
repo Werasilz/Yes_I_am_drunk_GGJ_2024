@@ -133,6 +133,8 @@ namespace Lab1
             DeselectAllCard();
 
             OnPlayerEndTurn?.Invoke(isPlayer);
+
+            UIGameplayManager.Instance.turnCounter.TurnUpdate();
         }
 
         private float GetTotal(PlayedCardData playedData, int cardDataIndex)
