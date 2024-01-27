@@ -82,7 +82,6 @@ public class PointLimit
 {
     public float goalPoint;
     public float currentPoint;
-public 
 
     public static System.Action<bool> OnPointUpdated = delegate { };
     public void SetCurrentPoint(float newCurrentPoint)
