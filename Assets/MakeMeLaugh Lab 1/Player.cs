@@ -16,8 +16,8 @@ namespace Lab1
 
         // ! Debuggg
         private float startPersistantValue = 1f;
-        private float eachCardScore = 0.5f;
-        private float addPersistanceValue = 0.5f;
+        private float eachCardScore = 1f;
+        private float addPersistanceValue = 1f;
 
         // ! Debuggg
 
