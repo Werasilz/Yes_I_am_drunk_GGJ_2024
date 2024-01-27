@@ -1269,6 +1269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _checkPointID: 0
   _checkPointPosition: {x: 0, y: 0, z: 0}
+  _enemyProgresses: []
 --- !u!1 &639873979
 GameObject:
   m_ObjectHideFlags: 0
