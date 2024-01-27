@@ -8,8 +8,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int _enemyID;
 
     [Header("Profile")]
-    [SerializeField] private EnemyProfileData _enemyProfileData;
-    private Profile _enemyProfile;
+    [SerializeField] private Profile _enemyProfile;
     public Profile EnemyProfile => _enemyProfile;
 
     [Header("User Interface")]
@@ -20,11 +19,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private bool _isTrigger;
     public bool IsTrigger => _isTrigger;
 
+    [Header("Character")]
+    [SerializeField] private GameObject[] _characters;
+
     void Start()
     {
         // Set Profile Image and Name
-        int randomIndex = Random.Range(0, _enemyProfileData.profiles.Length);
-        _enemyProfile = _enemyProfileData.profiles[randomIndex];
         _profileImage.sprite = _enemyProfile.sprite;
         _nameText.text = _enemyProfile.profileName;
     }
