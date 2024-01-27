@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Lab1;
+using System.Linq;
 using UnityEngine;
 
 namespace Lab1
@@ -13,11 +11,16 @@ namespace Lab1
         public List<PlayedCardData> playedCardDatas;
 
         public Deck deck;
+        public History history;
+
+        public bool isPlayer;
 
         // ! Debuggg
         private float startPersistantValue = 1f;
         private float eachCardScore = 1f;
         private float addPersistanceValue = 1f;
+
+        public static System.Action<bool> OnPlayerEndTurn = delegate { };
 
         // ! Debuggg
 
@@ -52,12 +55,14 @@ namespace Lab1
 
         public void SelectCard(Card card)
         {
-            CurrentSelectedCard.Add(card);
+            if (!CurrentSelectedCard.Contains(card))
+                CurrentSelectedCard.Add(card);
         }
 
         public void DeselectCard(Card card)
         {
-            CurrentSelectedCard.Remove(card);
+            if (CurrentSelectedCard.Contains(card))
+                CurrentSelectedCard.Remove(card);
         }
         public void DeselectAllCard()
         {
@@ -99,7 +104,7 @@ namespace Lab1
             playedData.lastCardType = CurrentSelectedCard[0].cardData.CardType;
 
             // Setup Stack Bonus Value
-            playedData.stackBonusValue = GetStackBonus(cardDataIndex);
+            playedData.stackBonusValue = GetStackBonus();
 
             // Setup Calculate Value
             playedData.calculateValue = playedData.persistantValue + playedData.stackBonusValue;
@@ -109,6 +114,16 @@ namespace Lab1
 
             playedCardDatas.Add(playedData);
 
+            CardData[] cardDatas = CurrentSelectedCard.Select(t => t.cardData).ToArray();
+
+            history.SetHistory(cardDatas.ToList());
+
+            UIGameplayManager.OnDisplayValue?.Invoke(isPlayer ? 0 : 1,
+                                                     playedData.persistantValue.ToString(),
+                                                     playedData.stackBonusValue.ToString(),
+                                                     playedData.calculateValue.ToString(),
+                                                     playedData.totalValue.ToString());
+
             // Initialize new Card with Used card
             for (int i = 0; i < CurrentSelectedCard.Count; i++)
             {
@@ -116,6 +131,8 @@ namespace Lab1
             }
 
             DeselectAllCard();
+
+            OnPlayerEndTurn?.Invoke(isPlayer);
         }
 
         private float GetTotal(PlayedCardData playedData, int cardDataIndex)
@@ -126,11 +143,8 @@ namespace Lab1
                 return playedCardDatas[cardDataIndex].totalValue + playedData.calculateValue;
         }
 
-        private float GetStackBonus(int cardDataIndex)
+        private float GetStackBonus()
         {
-            if (cardDataIndex == -1)
-                return 0;
-
             if (CurrentSelectedCard.Count >= 2)
                 return eachCardScore * CurrentSelectedCard.Count;
             else
