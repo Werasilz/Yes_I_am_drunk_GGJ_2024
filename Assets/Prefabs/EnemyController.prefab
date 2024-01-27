@@ -88,10 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRadius: 30
-  patrolDelay: 5
-  waitTime: 3
+  minPatrolDelay: 2
+  maxPatrolDelay: 4
+  minWaitTime: 1
+  maxWaitTime: 3
   lerpSpeed: 5
-  isArrive: 0
 --- !u!135 &3424938080496978110
 SphereCollider:
   m_ObjectHideFlags: 0

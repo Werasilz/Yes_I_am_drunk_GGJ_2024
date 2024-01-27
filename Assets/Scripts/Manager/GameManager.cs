@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public bool isNPCAskQuestion = false;
     public bool isBeginBattle = false;
+    public int enemyBattleID;
 
     protected override void Awake()
     {

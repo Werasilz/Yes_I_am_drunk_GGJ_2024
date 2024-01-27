@@ -69,6 +69,8 @@ public class PlayerTrigger : MonoBehaviour
 
     private void PrepareBattle(Profile enemyProfile)
     {
+        GameManager.Instance.enemyBattleID = _enemyController.EnemyID;
+
         PostProcessManager.Instance.SetChromaticAberration();
         PostProcessManager.Instance.SetLensDistortion();
         PostProcessManager.Instance.SetVignette();
