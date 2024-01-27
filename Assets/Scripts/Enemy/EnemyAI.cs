@@ -35,6 +35,11 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        if (IsPositionOnNavMesh(_navMeshAgent.destination) == false)
+        {
+            return;
+        }
+
         if (_navMeshAgent.isStopped == false)
         {
             if (_navMeshAgent.remainingDistance > 0.1f)
@@ -64,7 +69,17 @@ public class EnemyAI : MonoBehaviour
     {
         _isArrive = false;
         Vector3 randomPoint = RandomNavSphere(_startPosition, patrolRadius, -1);
-        _navMeshAgent.SetDestination(randomPoint);
+
+        NavMeshHit hit;
+        bool isHit = IsPositionOnNavMesh(randomPoint);
+        if (isHit)
+        {
+            _navMeshAgent.SetDestination(randomPoint);
+        }
+        else
+        {
+            WaitAtDestination();
+        }
     }
 
     void WaitAtDestination()
@@ -84,6 +99,12 @@ public class EnemyAI : MonoBehaviour
         return navHit.position;
     }
 
+    bool IsPositionOnNavMesh(Vector3 position)
+    {
+        NavMeshHit hit;
+        return NavMesh.SamplePosition(position, out hit, 0.1f, NavMesh.AllAreas);
+    }
+
     public void SetStopMove(bool isStop)
     {
         _navMeshAgent.isStopped = isStop;
@@ -91,14 +112,12 @@ public class EnemyAI : MonoBehaviour
         if (isStop)
         {
             float value = _animator.GetFloat("Speed");
-            DOTween.To(() => value, x => value = x, 0, 0.25f).OnUpdate(() =>
             DOTween.To(() => value, x => value = x, 0, 0.5f).OnUpdate(() =>
             {
                 _animator.SetFloat("Speed", value);
             }).OnComplete(() =>
             {
-                Vector3 lookAt = new(0, PlayerTrigger.Instance.transform.position.y, 0);
-                transform.DODynamicLookAt(lookAt, 1f);
+                transform.DODynamicLookAt(PlayerTrigger.Instance.transform.localPosition, 1.5f);
             });
         }
     }

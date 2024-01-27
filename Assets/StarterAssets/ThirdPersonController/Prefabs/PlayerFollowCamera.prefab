@@ -84,7 +84,6 @@ GameObject:
   - component: {fileID: 2070925442191277757}
   - component: {fileID: 2070925442191277753}
   - component: {fileID: 2070925442191277752}
-  - component: {fileID: 1061200879499883678}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -148,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.25, z: 0.3}
-  ShoulderOffset: {x: 1, y: 0.38, z: 0}
+  Damping: {x: 0.1, y: 0, z: 0.3}
+  ShoulderOffset: {x: 1, y: 0.26, z: 0}
   VerticalArmLength: 0
   CameraSide: 0.6
   CameraDistance: 2.8
@@ -160,15 +159,3 @@ MonoBehaviour:
   CameraRadius: 0.15
   DampingIntoCollision: 0
   DampingFromCollision: 0
---- !u!114 &1061200879499883678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070925442191277755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

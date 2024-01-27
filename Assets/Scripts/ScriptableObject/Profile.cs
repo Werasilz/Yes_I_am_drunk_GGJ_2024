@@ -4,5 +4,6 @@ using UnityEngine;
 public class Profile : ScriptableObject
 {
     public string profileName;
+    public string dialogue;
     public Sprite sprite;
 }

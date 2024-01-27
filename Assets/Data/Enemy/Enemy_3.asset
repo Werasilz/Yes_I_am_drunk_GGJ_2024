@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa866b5c4144494f9a477cc8b15f441, type: 3}
   m_Name: Enemy_3
   m_EditorClassIdentifier: 
-  profileName: Name
+  profileName: Grandpa
+  dialogue: 
   sprite: {fileID: 0}
