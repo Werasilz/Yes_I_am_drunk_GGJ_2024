@@ -23,36 +23,22 @@ namespace Lab1
 
         public void ShuffleDeck()
         {
-            List<CardData> temp_deck1 = currentDeck;
-            List<CardData> temp_deck2 = new List<CardData>();
+            ShuffleDeck(currentDeck);
+        }
 
-            while (temp_deck1.Count == 0)
+        private void ShuffleDeck<T>(List<T> list)
+        {
+            int n = list.Count;
+            System.Random rng = new System.Random();
+
+            while (n > 1)
             {
-                int r = Random.Range(0, temp_deck1.Count);
-                temp_deck2.Add(temp_deck1[r]);
-                temp_deck1.RemoveAt(r);
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
             }
-
-            currentDeck = temp_deck2;
-
-            /*
-
-                        for (int i = 0; i < currentDeck.Count; i++)
-                        {
-                            if (temp_deck.Count == i)
-                            {
-                                temp_deck.Add(currentDeck[i]);
-                            }
-                            else
-                            {
-                                temp_deck.Add()
-                            }
-
-                            int r = Random.Range(i, currentDeck.Count);
-                            texts[i] = texts[r];
-                            texts[r] = tmp;
-                        }
-                        */
         }
     }
 }
