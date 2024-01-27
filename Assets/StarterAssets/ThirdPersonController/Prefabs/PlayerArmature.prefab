@@ -1303,9 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f684a937a152634fb549ea5d338348d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerProfile:
-    profileName: Player
-    sprite: {fileID: 21300000, guid: 751aa1b6637101946b2fdbb7aa27d6ad, type: 3}
+  _playerProfile: {fileID: 11400000, guid: 57ec485d193bb674bbbc0bbc15df7670, type: 2}
   _enemyController: {fileID: 0}
   _delayToShowVersusCanvas: 1
   _delayToLoadBattleScene: 3
