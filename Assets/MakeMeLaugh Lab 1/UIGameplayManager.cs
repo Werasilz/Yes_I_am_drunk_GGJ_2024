@@ -13,6 +13,8 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
 
     public TurnCounter turnCounter;
 
+    public PointLimit pointLimit;
+
     public static System.Action<int, string, string, string, string> OnDisplayValue = delegate { };
     [SerializeField] private float arrowLerpSpeed;
 
@@ -21,6 +23,8 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
         base.Awake();
 
         OnDisplayValue += DisplayCalculatedValue;
+
+        turnCounter.InitializeTurnLimit(GameManager.Instance.battleEnemyProfile.turnLimit);
     }
 
     private void Update()
@@ -48,12 +52,44 @@ public class TurnCounter
     public int turnLimit = 5;
     public int currentTurn = 1;
 
+    public TextMeshProUGUI turnLimitText;
     public static System.Action<bool> OnTurnUpdated = delegate { };
+
+    public void InitializeTurnLimit(int turnLimit)
+    {
+        this.turnLimit = turnLimit;
+        UpdateTurnUI();
+    }
     public void TurnUpdate()
     {
         currentTurn++;
 
-        OnTurnUpdated?.Invoke(currentTurn >= turnLimit);
+        UpdateTurnUI();
+
+        bool isEndByTurnLimit = currentTurn > turnLimit;
+
+        OnTurnUpdated?.Invoke(isEndByTurnLimit);
+    }
+
+    public void UpdateTurnUI()
+    {
+        turnLimitText.text = $"{currentTurn} / {turnLimit}";
+    }
+}
+
+[System.Serializable]
+public class PointLimit
+{
+    public float goalPoint;
+    public float currentPoint;
+public 
+
+    public static System.Action<bool> OnPointUpdated = delegate { };
+    public void SetCurrentPoint(float newCurrentPoint)
+    {
+        currentPoint = newCurrentPoint;
+
+        OnPointUpdated?.Invoke(true);
     }
 }
 
