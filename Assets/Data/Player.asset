@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa866b5c4144494f9a477cc8b15f441, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  profileName: Player
-  sprite: {fileID: 0}
+  ID: 999
+  profileName: Bob
+  dialogue: 
+  sprite: {fileID: 21300000, guid: f7080f9b38861ee4999952be19ccdf47, type: 3}

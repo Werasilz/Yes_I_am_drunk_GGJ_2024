@@ -13,7 +13,6 @@ public class QuestionUIController : SceneSingleton<QuestionUIController>
     [SerializeField] private TMP_Text _enemyNameText;
 
     [Header("Question")]
-    [SerializeField] private QuestionData _questionData;
     [SerializeField] private TMP_Text _questionText;
 
     protected override void Awake()
@@ -26,10 +25,9 @@ public class QuestionUIController : SceneSingleton<QuestionUIController>
         _content.SetActive(isActive);
     }
 
-    public void SetQuestion()
+    public void SetQuestion(string dialogue)
     {
-        int randomQuestion = Random.Range(0, _questionData.questions.Length);
-        _questionText.text = _questionData.questions[randomQuestion];
+        _questionText.text = dialogue;
     }
 
     public void SetEnemyProfile(Profile enemyProfile)
