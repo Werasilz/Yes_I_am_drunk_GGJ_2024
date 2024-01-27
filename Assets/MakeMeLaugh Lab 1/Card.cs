@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ namespace Lab1
         public bool selected = false;
         [SerializeField] Image currentImage;
         [SerializeField] GameObject highLightColor;
+
+        bool isDelay;
 
         public void InitalizeNewCardData(CardData cardData)
         {
@@ -32,21 +35,32 @@ namespace Lab1
 
         private void SelectThisCard(bool isSelect)
         {
-            if (player.CanSelectThisCard(this) == false) return;
+            if (isDelay) return;
 
-            selected = isSelect;
+            isDelay = true;
 
-            if (selected)
+            DOVirtual.DelayedCall(0.1f, () =>
             {
-                player.SelectCard(this);
-            }
-            else
-            {
-                player.DeselectCard(this);
-            }
+                isDelay = false;
 
-            // Display
-            highLightColor.SetActive(selected);
+                if (player.CanSelectThisCard(this) == false) return;
+
+                selected = isSelect;
+
+                if (selected)
+                {
+                    player.SelectCard(this);
+                }
+                else
+                {
+                    player.DeselectCard(this);
+                }
+
+                // Display
+                highLightColor.SetActive(selected);
+            });
+
+
         }
 
         public void ForceClose()
