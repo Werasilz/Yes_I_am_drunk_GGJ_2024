@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -23,8 +21,12 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
         base.Awake();
 
         OnDisplayValue += DisplayCalculatedValue;
-
         turnCounter.InitializeTurnLimit(GameManager.Instance.battleEnemyProfile.turnLimit);
+    }
+
+    private void Start()
+    {
+        DisplayCalculatedValue(1, "0", "0", "0", "0");
     }
 
     private void Update()

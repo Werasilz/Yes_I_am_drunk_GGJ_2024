@@ -13,6 +13,7 @@ namespace Lab1
         private Player player => GetComponentInParent<Player>();
         public bool selected = false;
         [SerializeField] Image currentImage;
+        [SerializeField] Image currentColor;
         [SerializeField] GameObject highLightColor;
 
         bool isDelay1;
@@ -21,7 +22,8 @@ namespace Lab1
         public void InitalizeNewCardData(CardData cardData)
         {
             this.cardData = cardData;
-            currentImage.color = cardData.CardColor;
+            currentImage.sprite = cardData.CardImage;
+            currentColor.color = cardData.CardColor;
         }
 
         public void OnPointerClick(PointerEventData eventData)

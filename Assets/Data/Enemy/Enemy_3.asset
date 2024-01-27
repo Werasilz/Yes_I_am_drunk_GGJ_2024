@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 3
   profileName: Ashley
-  dialogue: 
+  dialogue: Stop right there criminal scum
   sprite: {fileID: 21300000, guid: f4365456ff5093d4f9a5b91309a784c5, type: 3}
-  turnLimit: 7
-  health: 13
+  turnLimit: 9
+  health: 20

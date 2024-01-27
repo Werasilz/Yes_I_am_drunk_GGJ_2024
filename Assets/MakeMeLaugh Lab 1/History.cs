@@ -18,10 +18,12 @@ namespace Lab1
                 if (i < historyCardDatas.Count)
                 {
                     historyImages[i].color = historyCardDatas[i].CardColor;
+                    historyImages[i].gameObject.SetActive(true);
                 }
                 else
                 {
                     historyImages[i].color = new Color(0, 0, 0, 0);
+                    historyImages[i].gameObject.SetActive(false);
                 }
             }
 
