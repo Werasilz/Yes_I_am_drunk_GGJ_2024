@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private int _enemyID;
-    public int EnemyID => _enemyID;
-
     [Header("Profile")]
     [SerializeField] private Profile _enemyProfile;
     public Profile EnemyProfile => _enemyProfile;

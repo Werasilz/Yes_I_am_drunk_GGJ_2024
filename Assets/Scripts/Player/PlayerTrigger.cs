@@ -69,8 +69,8 @@ public class PlayerTrigger : MonoBehaviour
 
     private void PrepareBattle(Profile enemyProfile)
     {
-        print($"PrepareBattle Enemy ID:{_enemyController.EnemyID}");
-        GameManager.Instance.enemyBattleID = _enemyController.EnemyID;
+        print($"PrepareBattle Enemy ID:{_enemyController.EnemyProfile.ID}");
+        GameManager.Instance.battleEnemyProfile = _enemyController.EnemyProfile;
 
         PostProcessManager.Instance.Execute();
 
