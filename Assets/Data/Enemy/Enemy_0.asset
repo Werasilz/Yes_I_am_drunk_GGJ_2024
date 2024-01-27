@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fa866b5c4144494f9a477cc8b15f441, type: 3}
-  m_Name: Enemy_4
+  m_Name: Enemy_0
   m_EditorClassIdentifier: 
-  ID: 3
-  profileName: Ashley
-  dialogue: 
-  sprite: {fileID: 21300000, guid: f4365456ff5093d4f9a5b91309a784c5, type: 3}
+  profileName: Pig
+  dialogue: Stop right there criminal scum
+  sprite: {fileID: 21300000, guid: b3c17c872786e9740a5d1940e82df958, type: 3}

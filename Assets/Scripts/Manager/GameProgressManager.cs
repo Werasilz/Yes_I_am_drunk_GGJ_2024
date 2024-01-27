@@ -5,10 +5,14 @@ public class EnemyProgress
 {
     public int enemyID;
     public bool isClear = false;
+    public CheckPointTrigger checkPointTrigger;
 }
 
 public class GameProgressManager : Singleton<GameProgressManager>
 {
+    [Header("Start Point")]
+    [SerializeField] private Vector3 _startPoint;
+
     [Header("Check Point")]
     [SerializeField] private int _checkPointID;
     public int CheckPointID => _checkPointID;
@@ -16,6 +20,7 @@ public class GameProgressManager : Singleton<GameProgressManager>
     public Vector3 CheckPointPosition => _checkPointPosition;
 
     [Header("Enemy Progress")]
+    [SerializeField] private int _lastEnemyProgress = 0;
     [SerializeField] private EnemyProgress[] _enemyProgresses;
 
     protected override void Awake()
@@ -25,13 +30,15 @@ public class GameProgressManager : Singleton<GameProgressManager>
 
     private void Start()
     {
+        _checkPointPosition = _startPoint;
         LoadCheckPoint();
 
+        // For load check point when back to explore gameplay scene
         SceneLoaderManager.Instance.OnLoadSceneComplete += (sceneIndexes) =>
         {
             if (sceneIndexes == SceneIndexes.ExploreGameplay)
             {
-                LoadCheckPoint();
+                CheckEnemyProgress();
             }
         };
     }
@@ -52,5 +59,15 @@ public class GameProgressManager : Singleton<GameProgressManager>
     public void UpdateEnemyProgress(int enemyID, bool isClear)
     {
         _enemyProgresses[enemyID].isClear = isClear;
+        _lastEnemyProgress = enemyID;
+    }
+
+    public void CheckEnemyProgress()
+    {
+        if (_enemyProgresses[_lastEnemyProgress].isClear)
+        {
+            SetCheckPoint(_lastEnemyProgress, _enemyProgresses[_lastEnemyProgress].checkPointTrigger.CheckPointTransform.position);
+            LoadCheckPoint();
+        }
     }
 }
