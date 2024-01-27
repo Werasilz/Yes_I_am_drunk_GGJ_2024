@@ -45,7 +45,6 @@ public class GameProgressManager : Singleton<GameProgressManager>
 
     public void LoadCheckPoint()
     {
-        GameManager.Instance.Reset();
         PlayerTrigger player = FindObjectOfType<PlayerTrigger>();
         player.gameObject.transform.position = _checkPointPosition;
     }

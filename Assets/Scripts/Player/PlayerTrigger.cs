@@ -16,9 +16,19 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] private float _delayToShowVersusCanvas = 1f;
     [SerializeField] private float _delayToLoadBattleScene = 3f;
 
+    private Animator _animator;
+
     private void Awake()
     {
         Instance = this;
+        _animator = GetComponent<Animator>();
+        _animator.CrossFade("StandUp", 0.1f);
+
+        GameManager.Instance.isStopPlayerMove = true;
+        DOVirtual.DelayedCall(5f, () =>
+        {
+            GameManager.Instance.isStopPlayerMove = false;
+        });
     }
 
     private void Update()

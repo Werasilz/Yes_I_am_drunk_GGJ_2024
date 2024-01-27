@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     {
         _isTrigger = true;
         _enemyAI.SetStopMove(true);
-        GameManager.Instance.isNPCAskQuestion = true;
+        GameManager.Instance.isStopPlayerMove = true;
 
         QuestionUIController.Instance.SetActiveContent(true);
         QuestionUIController.Instance.SetCanvasGroupAlpha(1);

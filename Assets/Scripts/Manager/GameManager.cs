@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public bool isNPCAskQuestion = false;
+    public bool isStopPlayerMove = false;
     public bool isBeginBattle = false;
     public Profile battleEnemyProfile;
 
@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Reset()
     {
-        isNPCAskQuestion = false;
+        isStopPlayerMove = false;
         isBeginBattle = false;
     }
 }
