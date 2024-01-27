@@ -8,6 +8,7 @@ public class Profile : ScriptableObject
     public string dialogue;
     public Sprite sprite;
 
+
     public int turnLimit;
     public int health;
 }

@@ -16,3 +16,5 @@ MonoBehaviour:
   profileName: Joe
   dialogue: 
   sprite: {fileID: 21300000, guid: a6826a0d1cf5a1c488861c96a2c11569, type: 3}
+  turnLimit: 5
+  health: 7
