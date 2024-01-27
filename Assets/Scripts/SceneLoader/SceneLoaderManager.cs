@@ -137,6 +137,7 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         }
 
         OnLoadSceneComplete?.Invoke(_currentActiveScene);
+        yield return new WaitForSeconds(0.5f);
 
         // Disable loading screen
         SetLoadingCanvasVisible(false);
