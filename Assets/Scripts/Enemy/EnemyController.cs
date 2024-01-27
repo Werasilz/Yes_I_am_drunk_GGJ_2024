@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
     public void SetTriggerEnter()
     {
         _isTrigger = transform;
+        GameManager.Instance.isNPCAskQuestion = true;
 
         QuestionUIController.Instance.SetActiveContent(true);
         QuestionUIController.Instance.SetCanvasGroupAlpha(1);

@@ -7,11 +7,14 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+		public static StarterAssetsInputs Instance;
+
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool enter;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -19,6 +22,24 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+
+		private readonly InputAction _anyKey = new(binding: "/*/<button>", type: InputActionType.Button);
+		public InputAction AnyKey => _anyKey;
+
+		private void Awake()
+		{
+			Instance = this;
+		}
+
+		private void OnEnable()
+		{
+			_anyKey.Enable();
+		}
+
+		private void OnDisable()
+		{
+			_anyKey.Disable();
+		}
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -28,7 +49,7 @@ namespace StarterAssets
 
 		public void OnLook(InputValue value)
 		{
-			if(cursorInputForLook)
+			if (cursorInputForLook)
 			{
 				LookInput(value.Get<Vector2>());
 			}
@@ -43,13 +64,17 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
-#endif
 
+		public void OnEnter(InputValue value)
+		{
+			EnterInput(value.isPressed);
+		}
+#endif
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -66,6 +91,11 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 
+		public void EnterInput(bool newEnterState)
+		{
+			enter = newEnterState;
+		}
+
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
@@ -76,5 +106,5 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
+
 }

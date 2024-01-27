@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public bool isNPCAskQuestion = false;
+    public bool isBeginBattle = false;
+
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    public void Reset()
+    {
+        isNPCAskQuestion = false;
+        isBeginBattle = false;
     }
 }

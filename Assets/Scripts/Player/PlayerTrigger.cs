@@ -1,20 +1,39 @@
 using DG.Tweening;
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerTrigger : MonoBehaviour
 {
     [Header("Profile")]
     [SerializeField] private Profile _playerProfile;
 
+    [Header("Enemy")]
+    [SerializeField] private EnemyController _enemyController;
+
     [Header("Delay")]
     [SerializeField] private float _delayToShowVersusCanvas = 1f;
     [SerializeField] private float _delayToLoadBattleScene = 3f;
+
+    private void Update()
+    {
+        if (_enemyController != null && _enemyController.IsTrigger)
+        {
+            if (StarterAssetsInputs.Instance.enter && GameManager.Instance.isBeginBattle == false)
+            {
+                GameManager.Instance.isBeginBattle = true;
+                QuestionUIController.Instance.SetActiveContent(false);
+                PrepareBattle(_enemyController.EnemyProfile);
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemyController = other.GetComponent<EnemyController>();
+            _enemyController = enemyController;
 
             if (enemyController.IsTrigger == false)
             {
@@ -28,6 +47,7 @@ public class PlayerTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemyController = other.GetComponent<EnemyController>();
+            _enemyController = null;
 
             if (enemyController.IsTrigger)
             {
