@@ -19,10 +19,12 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
     [SerializeField] private ProfileAnimate _chromaticAberrationIntensity;
     [SerializeField] private ProfileAnimate _lensDistortionIntensity;
     [SerializeField] private ProfileAnimate _vignetteIntensity;
+    [SerializeField] private ProfileAnimate _depthOfFieldEnd;
 
     private ChromaticAberration _chromaticAberration;
     private LensDistortion _lensDistortion;
     private Vignette _vignette;
+    private DepthOfField _depthOfField;
 
     protected override void Awake()
     {
@@ -40,6 +42,10 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
         }
 
         if (_postProcessVolume.profile.TryGet<Vignette>(out _vignette))
+        {
+        }
+
+        if (_postProcessVolume.profile.TryGet<DepthOfField>(out _depthOfField))
         {
         }
     }
@@ -80,6 +86,19 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
         }).OnComplete(() =>
         {
             _vignette.intensity.value = _vignetteIntensity.target;
+        });
+    }
+
+    [ContextMenu("SetDepthOfField")]
+    public void SetDepthOfField()
+    {
+        float value = _depthOfField.gaussianEnd.value;
+        DOTween.To(() => value, x => value = x, _depthOfFieldEnd.target, _depthOfFieldEnd.duration).OnUpdate(() =>
+        {
+            _depthOfField.gaussianEnd.value = value;
+        }).OnComplete(() =>
+        {
+            _depthOfField.gaussianEnd.value = _depthOfFieldEnd.target;
         });
     }
 }

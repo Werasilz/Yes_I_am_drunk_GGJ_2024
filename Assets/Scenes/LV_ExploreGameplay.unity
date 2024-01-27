@@ -193,10 +193,13 @@ MonoBehaviour:
     target: 1
     duration: 3
   _lensDistortionIntensity:
-    target: 1
+    target: 0.3
     duration: 3
   _vignetteIntensity:
     target: 0.4
+    duration: 3
+  _depthOfFieldEnd:
+    target: 0
     duration: 3
 --- !u!1 &48671546
 GameObject:

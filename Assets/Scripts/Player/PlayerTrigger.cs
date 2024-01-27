@@ -61,6 +61,7 @@ public class PlayerTrigger : MonoBehaviour
         PostProcessManager.Instance.SetChromaticAberration();
         PostProcessManager.Instance.SetLensDistortion();
         PostProcessManager.Instance.SetVignette();
+        PostProcessManager.Instance.SetDepthOfField();
 
         DOVirtual.DelayedCall(_delayToShowVersusCanvas, () =>
         {

@@ -14,9 +14,10 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < _enemyAmount; i++)
         {
             int randomSpawnPoint = Random.Range(0, _spawnPoints.Length);
-            Vector3 randomPosition = new Vector3(Random.Range(-_distance, _distance), 0, Random.Range(-_distance, _distance));
+            Vector3 randomPosition = new(Random.Range(-_distance, _distance), 0, Random.Range(-_distance, _distance));
             Vector3 finalPosition = _spawnPoints[randomSpawnPoint].position + randomPosition;
             GameObject enemy = Instantiate(_enemyPrefab, finalPosition, Quaternion.identity);
+            enemy.transform.SetParent(transform);
         }
     }
 }
