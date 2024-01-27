@@ -1187,6 +1187,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
+  enter: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -1301,11 +1302,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f684a937a152634fb549ea5d338348d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beginBattleTimeCounter:
-    counterType: 0
-    currentTime: 0
-    targetTime: 3
-    isCounting: 0
+  _playerProfile:
+    profileName: Player
+    sprite: {fileID: 21300000, guid: 751aa1b6637101946b2fdbb7aa27d6ad, type: 3}
+  _enemyController: {fileID: 0}
+  _delayToShowVersusCanvas: 1
+  _delayToLoadBattleScene: 3
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0
