@@ -41,6 +41,11 @@ namespace StarterAssets
 			_anyKey.Disable();
 		}
 
+		private void LateUpdate()
+		{
+			enter = false;
+		}
+
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
 		{
