@@ -35,26 +35,29 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (_navMeshAgent.remainingDistance > 0.1f)
+        if (_navMeshAgent.isStopped == false)
         {
-            _animatorSpeed = Mathf.Lerp(_animatorSpeed, 1f, Time.deltaTime * lerpSpeed);
-        }
-        else
-        {
-            _animatorSpeed = Mathf.Lerp(_animatorSpeed, 0f, Time.deltaTime * lerpSpeed);
-
-            if (_isArrive == false)
+            if (_navMeshAgent.remainingDistance > 0.1f)
             {
-                _isArrive = true;
-                float waitTime = Random.Range(minWaitTime, maxWaitTime);
-                DOVirtual.DelayedCall(waitTime, () =>
-                {
-                    WaitAtDestination();
-                });
+                _animatorSpeed = Mathf.Lerp(_animatorSpeed, 1f, Time.deltaTime * lerpSpeed);
             }
-        }
+            else
+            {
+                _animatorSpeed = Mathf.Lerp(_animatorSpeed, 0f, Time.deltaTime * lerpSpeed);
 
-        _animator.SetFloat("Speed", _animatorSpeed);
+                if (_isArrive == false)
+                {
+                    _isArrive = true;
+                    float waitTime = Random.Range(minWaitTime, maxWaitTime);
+                    DOVirtual.DelayedCall(waitTime, () =>
+                    {
+                        WaitAtDestination();
+                    });
+                }
+            }
+
+            _animator.SetFloat("Speed", _animatorSpeed);
+        }
     }
 
     void PatrolToRandomPoint()
@@ -79,5 +82,22 @@ public class EnemyAI : MonoBehaviour
         randomDirection += origin;
         NavMesh.SamplePosition(randomDirection, out NavMeshHit navHit, distance, layerMask);
         return navHit.position;
+    }
+
+    public void SetStopMove(bool isStop)
+    {
+        _navMeshAgent.isStopped = isStop;
+
+        if (isStop)
+        {
+            float value = _animator.GetFloat("Speed");
+            DOTween.To(() => value, x => value = x, 0, 0.25f).OnUpdate(() =>
+            {
+                _animator.SetFloat("Speed", value);
+            });
+
+            Vector3 lookAt = new(0, PlayerTrigger.Instance.transform.position.y, 0);
+            transform.DODynamicLookAt(lookAt, 1f);
+        }
     }
 }

@@ -22,8 +22,12 @@ public class EnemyController : MonoBehaviour
     [Header("Character")]
     [SerializeField] private GameObject[] _characters;
 
+    private EnemyAI _enemyAI;
+
     void Start()
     {
+        _enemyAI = GetComponent<EnemyAI>();
+
         // Set Profile Image and Name
         _profileImage.sprite = _enemyProfile.sprite;
         _nameText.text = _enemyProfile.profileName;
@@ -32,6 +36,7 @@ public class EnemyController : MonoBehaviour
     public void SetTriggerEnter()
     {
         _isTrigger = transform;
+        _enemyAI.SetStopMove(true);
         GameManager.Instance.isNPCAskQuestion = true;
 
         QuestionUIController.Instance.SetActiveContent(true);

@@ -1,10 +1,11 @@
 using DG.Tweening;
 using StarterAssets;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerTrigger : MonoBehaviour
 {
+    public static PlayerTrigger Instance;
+
     [Header("Profile")]
     [SerializeField] private Profile _playerProfile;
 
@@ -14,6 +15,11 @@ public class PlayerTrigger : MonoBehaviour
     [Header("Delay")]
     [SerializeField] private float _delayToShowVersusCanvas = 1f;
     [SerializeField] private float _delayToLoadBattleScene = 3f;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -30,6 +36,11 @@ public class PlayerTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_enemyController != null)
+        {
+            return;
+        }
+
         if (other.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemyController = other.GetComponent<EnemyController>();
