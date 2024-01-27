@@ -91,7 +91,6 @@ public class EnemyAI : MonoBehaviour
         if (isStop)
         {
             float value = _animator.GetFloat("Speed");
-            DOTween.To(() => value, x => value = x, 0, 0.25f).OnUpdate(() =>
             DOTween.To(() => value, x => value = x, 0, 0.5f).OnUpdate(() =>
             {
                 _animator.SetFloat("Speed", value);
