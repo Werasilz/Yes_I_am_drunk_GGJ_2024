@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
         QuestionUIController.Instance.SetActiveContent(true);
         QuestionUIController.Instance.SetCanvasGroupAlpha(1);
         QuestionUIController.Instance.SetEnemyProfile(_enemyProfile);
-        QuestionUIController.Instance.SetQuestion();
+        QuestionUIController.Instance.SetQuestion(_enemyProfile.dialogue);
     }
 
     // public void SetTriggerExit()
