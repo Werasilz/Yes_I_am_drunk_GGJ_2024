@@ -16,6 +16,9 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
     public static System.Action<int, string, string, string, string> OnDisplayValue = delegate { };
     [SerializeField] private float arrowLerpSpeed;
 
+    [Header("Hint")]
+    public TMP_Text hintPersistText;
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,6 +30,7 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
     private void Start()
     {
         DisplayCalculatedValue(1, "0", "0", "0", "0");
+        ClearHintText();
     }
 
     private void Update()
@@ -45,6 +49,13 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
         valueTexts[uiIndex].stackBonusValueText.text = stackBonusValue;
         valueTexts[uiIndex].calculateValueText.text = calculateValue;
         valueTexts[uiIndex].totalValueText.text = totalValue;
+    }
+
+    public void ClearHintText()
+    {
+        hintPersistText.text = string.Empty;
+        valueTexts[0].stackBonusValueText.text = "0";
+        valueTexts[0].calculateValueText.text = "0";
     }
 }
 

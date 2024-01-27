@@ -56,13 +56,27 @@ namespace Lab1
         public void SelectCard(Card card)
         {
             if (!CurrentSelectedCard.Contains(card))
+            {
                 CurrentSelectedCard.Add(card);
+                ShowHintScore();
+            }
         }
 
         public void DeselectCard(Card card)
         {
             if (CurrentSelectedCard.Contains(card))
+            {
                 CurrentSelectedCard.Remove(card);
+
+                if (CurrentSelectedCard.Count <= 0)
+                {
+                    UIGameplayManager.Instance.ClearHintText();
+                }
+                else
+                {
+                    ShowHintScore();
+                }
+            }
         }
         public void DeselectAllCard()
         {
@@ -71,7 +85,52 @@ namespace Lab1
                 CurrentSelectedCard[i].ForceClose();
             }
 
+            UIGameplayManager.Instance.ClearHintText();
             CurrentSelectedCard = new List<Card>();
+        }
+
+        private void ShowHintScore()
+        {
+            if (CurrentSelectedCard.Count == 0) return;
+            print($"Show Hint Score CurrentSelectedCard:{CurrentSelectedCard.Count}");
+            PlayedCardData playedData = new PlayedCardData();
+
+            int cardDataIndex;
+
+            if (playedCardDatas.Count == 0)
+            {
+                cardDataIndex = -1;
+            }
+            else
+            {
+                cardDataIndex = playedCardDatas.Count - 1;
+            }
+
+            // Setup Persistant Value
+            playedData.persistantValue = (cardDataIndex == -1) ? startPersistantValue : playedCardDatas[cardDataIndex].persistantValue;
+
+            float hintPersist = 0f;
+            float hintStack = 0f;
+            float hintSummary = 0f;
+
+            if (NeedToAddPersistantValue())
+            {
+                // Show Hint persist score
+                hintPersist = playedData.persistantValue + 1;
+                UIGameplayManager.Instance.valueTexts[0].persistantValueText.text = $"+{hintPersist}";
+            }
+            else
+            {
+                UIGameplayManager.Instance.valueTexts[0].persistantValueText.text = string.Empty;
+            }
+
+            // Show Hint stack score
+            hintStack = GetStackBonus();
+            UIGameplayManager.Instance.valueTexts[0].stackBonusValueText.text = hintStack.ToString();
+
+            // Setup Calculate Value
+            hintSummary = playedData.persistantValue + hintStack;
+            UIGameplayManager.Instance.valueTexts[0].calculateValueText.text = hintSummary.ToString();
         }
 
         public void PlayCard()
@@ -135,6 +194,8 @@ namespace Lab1
             OnPlayerEndTurn?.Invoke(isPlayer);
 
             UIGameplayManager.Instance.turnCounter.TurnUpdate();
+
+            UIGameplayManager.Instance.ClearHintText();
         }
 
         private float GetTotal(PlayedCardData playedData, int cardDataIndex)
