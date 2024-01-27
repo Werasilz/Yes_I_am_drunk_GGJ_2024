@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd3c305a0acf38448719d4975f60bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyProfile: {fileID: 0}
   _characters:
   - {fileID: 1468872815}
   - {fileID: 1477515483}
@@ -1868,6 +1869,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9050377628435634413, guid: 20320bf3e6ace5949bb2f1cc717578c5,
+        type: 3}
+      propertyPath: battleEnemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 04113fda899bfa941b1801b7215d8488,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
