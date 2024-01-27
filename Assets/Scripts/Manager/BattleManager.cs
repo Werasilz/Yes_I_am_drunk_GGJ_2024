@@ -23,7 +23,10 @@ public class BattleManager : MonoBehaviour
         });
         enemyTransform.DOMove(enemyTargetPosition.position, duration).SetEase(endEase).OnComplete(() =>
         {
-            enemyTransform.DODynamicLookAt(playerTransform.localPosition, 1f);
+            enemyTransform.DODynamicLookAt(playerTransform.localPosition, 1f).OnComplete(() =>
+            {
+                UIWindowManager.Instance.OpenWindow("Gameplay");
+            });
         });
     }
 }
