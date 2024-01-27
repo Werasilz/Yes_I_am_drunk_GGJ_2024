@@ -125,6 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a4277bac5ac3a458485ff996777928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardData: {fileID: 0}
+  selected: 0
+  currentImage: {fileID: 2593923445953350168}
   highLightColor: {fileID: 5086416319222171211}
 --- !u!1 &6968376946611222771
 GameObject:

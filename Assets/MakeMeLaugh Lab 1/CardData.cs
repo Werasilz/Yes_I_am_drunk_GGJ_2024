@@ -10,6 +10,7 @@ namespace Lab1
         [field: SerializeField] public string CardName { get; private set; }
         [field: SerializeField] public string CardDescription { get; private set; }
         [field: SerializeField] public CardType CardType { get; private set; }
+        [field: SerializeField] public Color CardColor { get; private set; }
         [field: SerializeField] public Sprite CardImage { get; private set; }
     }
 }
