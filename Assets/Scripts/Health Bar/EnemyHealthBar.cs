@@ -80,6 +80,7 @@ public class EnemyHealthBar : MonoBehaviour
         {
             // Player Win
             emojiImage.sprite = emojis[1];
+            EndBattle();
         }
     }
 }

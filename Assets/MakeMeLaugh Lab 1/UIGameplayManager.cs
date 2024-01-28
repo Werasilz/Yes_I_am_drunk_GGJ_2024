@@ -12,8 +12,6 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
 
     public TurnCounter turnCounter;
 
-    public PointLimit pointLimit;
-
     public static System.Action<int, string, string, string, string> OnDisplayValue = delegate { };
     [SerializeField] private float arrowLerpSpeed;
     [SerializeField] Player player;
@@ -112,20 +110,6 @@ public class TurnCounter
     }
 }
 
-[System.Serializable]
-public class PointLimit
-{
-    public float goalPoint;
-    public float currentPoint;
-
-    public static System.Action<bool> OnPointUpdated = delegate { };
-    public void SetCurrentPoint(float newCurrentPoint)
-    {
-        currentPoint = newCurrentPoint;
-
-        OnPointUpdated?.Invoke(true);
-    }
-}
 
 [System.Serializable]
 public class ValueText

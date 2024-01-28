@@ -214,10 +214,10 @@ namespace Lab1
 
                 Destroy(_vfx.gameObject, 1f);
 
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.6f);
 
             playButton.gameObject.SetActive(true);
 
