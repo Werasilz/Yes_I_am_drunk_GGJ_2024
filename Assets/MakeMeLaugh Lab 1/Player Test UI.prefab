@@ -796,6 +796,10 @@ MonoBehaviour:
   deck: {fileID: 6443851775551086237}
   history: {fileID: 4609300059096986982}
   isPlayer: 1
+  vfxPrefabs: {fileID: 7014473041859841748, guid: 3a3fa21104d4af744ad81d3084ec1cbc,
+    type: 3}
+  vfxSpawnPosition: {fileID: 0}
+  playButton: {fileID: 1593068660203081922}
   startPersistantValue: 1
 --- !u!114 &6443851775551086237
 MonoBehaviour:

@@ -103,7 +103,7 @@ namespace StarterAssets
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			// SetCursorState(cursorLocked);
+			SetCursorState(!GameManager.Instance.isBeginBattle);
 		}
 
 		public void SetCursorState(bool newState)

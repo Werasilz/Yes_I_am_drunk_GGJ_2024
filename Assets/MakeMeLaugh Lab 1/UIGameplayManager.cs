@@ -34,8 +34,8 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
         OnDisplayValue?.Invoke(0, "0", "0", "0", "0");
         ClearHintText();
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // Cursor.lockState = CursorLockMode.None;
+        // Cursor.visible = true;
     }
 
     private void Update()
@@ -83,6 +83,7 @@ public class TurnCounter
 
     public TextMeshProUGUI turnLimitText;
     public static System.Action<bool> OnTurnUpdated = delegate { };
+    [SerializeField] EnemyHealthBar enemyHealth;
 
     public void InitializeTurnLimit(int turnLimit)
     {
@@ -97,8 +98,10 @@ public class TurnCounter
         UpdateTurnUI();
 
         bool isEndByTurnLimit = currentTurn > turnLimit;
+        bool isEndByFullScore = enemyHealth.currrentHealth >= enemyHealth.targetHealth;
 
-        OnTurnUpdated?.Invoke(isEndByTurnLimit);
+        if (isEndByFullScore || isEndByTurnLimit)
+            OnTurnUpdated?.Invoke(true);
     }
 
     public void UpdateTurnUI()

@@ -1,6 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.VFX;
 
 namespace Lab1
 {
@@ -15,6 +18,10 @@ namespace Lab1
 
         public bool isPlayer;
 
+        public VfxParticle vfxPrefabs;
+        public Transform vfxSpawnPosition;
+        public Button playButton;
+        Coroutine createVfxIE;
         // ! Debuggg
         [HideInInspector] public float startPersistantValue = 1f;
         private float eachCardScore = 1f;
@@ -26,6 +33,11 @@ namespace Lab1
 
         public void Initialize()
         {
+            if (createVfxIE != null)
+                StopCoroutine(createVfxIE);
+
+            playButton.gameObject.SetActive(true);
+
             playedCardDatas = new List<PlayedCardData>();
             DeselectAllCard();
 
@@ -181,6 +193,35 @@ namespace Lab1
                                                      playedData.calculateValue.ToString(),
                                                      playedData.totalValue.ToString());
 
+            // 
+            CreateParticle(cardDatas);
+
+        }
+
+        private void CreateParticle(CardData[] cardDatas)
+        {
+            createVfxIE = StartCoroutine(CreateParticleCoroutine(cardDatas));
+        }
+
+        private IEnumerator CreateParticleCoroutine(CardData[] cardDatas)
+        {
+            playButton.gameObject.SetActive(false);
+
+            for (int i = 0; i < cardDatas.Length; i++)
+            {
+                VfxParticle _vfx = Instantiate(vfxPrefabs, vfxSpawnPosition.position + GetRandomCirclePosition(0.2f), Quaternion.identity);
+                _vfx.vfxImage.sprite = cardDatas[i].CardImage;
+
+                Destroy(_vfx.gameObject, 1f);
+
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            playButton.gameObject.SetActive(true);
+
+
             // Initialize new Card with Used card
             for (int i = 0; i < CurrentSelectedCard.Count; i++)
             {
@@ -194,6 +235,18 @@ namespace Lab1
             UIGameplayManager.Instance.turnCounter.TurnUpdate();
 
             UIGameplayManager.Instance.ClearHintText();
+        }
+
+        Vector3 GetRandomCirclePosition(float circleRadius)
+        {
+            // Generate a random angle
+            float angle = Random.Range(0f, 2f * Mathf.PI);
+
+            // Convert polar coordinates to Cartesian coordinates
+            float x = circleRadius * Mathf.Cos(angle);
+            float y = circleRadius * Mathf.Sin(angle);
+
+            return new Vector3(x, y);
         }
 
         private float GetTotal(PlayedCardData playedData, int cardDataIndex)

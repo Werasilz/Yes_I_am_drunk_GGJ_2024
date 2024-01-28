@@ -7,6 +7,7 @@ namespace Lab1
     [CreateAssetMenu(fileName = "Card Data", menuName = "Custom/Card/Data")]
     public class CardData : ScriptableObject
     {
+        [field: SerializeField] public GameObject Particle { get; private set; }
         [field: SerializeField] public string CardName { get; private set; }
         [field: SerializeField] public string CardDescription { get; private set; }
         [field: SerializeField] public CardType CardType { get; private set; }

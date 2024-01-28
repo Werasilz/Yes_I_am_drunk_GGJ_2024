@@ -369,6 +369,7 @@ MonoBehaviour:
     turnLimit: 5
     currentTurn: 1
     turnLimitText: {fileID: 8469507313080320529}
+    enemyHealth: {fileID: 897568989233270381}
   pointLimit:
     goalPoint: 0
     currentPoint: 0
@@ -1344,6 +1345,10 @@ MonoBehaviour:
   targetHealth: 0
   currrentHealth: 0
   fill: {fileID: 3503123509138545282}
+  emojis:
+  - {fileID: 21300000, guid: 390372224b7e49f45ab48480d2b7efc1, type: 3}
+  - {fileID: 21300000, guid: a8cf06f68d167b94f822cc2fd17d237c, type: 3}
+  emojiImage: {fileID: 6555570684663829263}
 --- !u!1 &2973385294361764609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,12 +4429,12 @@ PrefabInstance:
     - target: {fileID: 2493976176122078953, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493976176122078953, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493976176122078953, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
@@ -4439,22 +4444,22 @@ PrefabInstance:
     - target: {fileID: 2493976176122078953, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 2493976176122078953, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3203134220800800654, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3203134220800800654, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3203134220800800654, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
@@ -4469,7 +4474,7 @@ PrefabInstance:
     - target: {fileID: 3203134220800800654, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5020754838945308655, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
@@ -4703,6 +4708,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7783394012085055105, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
+      propertyPath: playButton
+      value: 
+      objectReference: {fileID: 7734562985765580831}
+    - target: {fileID: 7783394012085055105, guid: 5e1a1039052fd3449aaade2f00c98015,
+        type: 3}
       propertyPath: uiGameplayManager
       value: 
       objectReference: {fileID: 4445045601540426129}
@@ -4774,3 +4784,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 9028881142220546269}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7734562985765580831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1593068660203081922, guid: 5e1a1039052fd3449aaade2f00c98015,
+    type: 3}
+  m_PrefabInstance: {fileID: 9028881142220546269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

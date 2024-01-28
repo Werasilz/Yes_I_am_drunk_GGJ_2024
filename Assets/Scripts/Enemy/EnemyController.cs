@@ -23,9 +23,12 @@ public class EnemyController : MonoBehaviour
     {
         _enemyAI = GetComponent<EnemyAI>();
 
-        // Set Profile Image and Name
-        _profileImage.sprite = _enemyProfile.sprite;
-        _nameText.text = _enemyProfile.profileName;
+        if (_enemyProfile != null && _profileImage != null)
+        {
+            // Set Profile Image and Name
+            _profileImage.sprite = _enemyProfile.sprite;
+            _nameText.text = _enemyProfile.profileName;
+        }
     }
 
     public void SetTriggerEnter()
