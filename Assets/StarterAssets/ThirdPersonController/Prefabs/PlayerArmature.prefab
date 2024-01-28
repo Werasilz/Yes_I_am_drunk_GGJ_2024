@@ -1340,7 +1340,7 @@ MonoBehaviour:
   _currentEnemyTrigger: {fileID: 0}
   _delayToShowVersusCanvas: 1
   _delayToFadeIn: 1
-  _delayToLoadBattleScene: 2
+  _delayToLoadBattleScene: 3
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0
