@@ -10,11 +10,11 @@ EditorBuildSettings:
     guid: fb9a36c5c1df34435a799110b4644246
   - enabled: 1
     path: Assets/Scenes/LV_MainMenu.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 186454276e8c86d41907039ec7a622a0
   - enabled: 1
     path: Assets/Scenes/LV_ExploreGameplay.unity
     guid: de1caea9a2f036644ad5696e2aaccb7f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LV_BattleScene.unity
-    guid: e2b08f8994e7c6f48a95fb5f62b62344
+    guid: ead3e305454bc154ab45a2fa6ebefcc3
   m_configObjects: {}
