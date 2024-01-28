@@ -14,11 +14,12 @@ public class EnemyHealthBar : MonoBehaviour
     public int currrentHealth;
     public Image fill;
 
-    
+
     public void IntializeHealth()
     {
         targetHealth = GameManager.Instance.battleEnemyProfile.health;
         currrentHealth = 0;
+        UpdateHealth(0);
     }
 
     private void Awake()
