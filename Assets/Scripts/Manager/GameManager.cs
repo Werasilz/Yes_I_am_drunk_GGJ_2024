@@ -13,6 +13,11 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.PlayMusic(0);
+    }
+
     public void Reset()
     {
         isStopPlayerMove = false;
