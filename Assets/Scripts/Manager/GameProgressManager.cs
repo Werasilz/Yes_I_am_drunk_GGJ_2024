@@ -23,6 +23,8 @@ public class GameProgressManager : Singleton<GameProgressManager>
     [SerializeField] private int _lastEnemyProgress = 0;
     [SerializeField] private EnemyProgress[] _enemyProgresses;
 
+    public System.Action OnUpdateProgress;
+
     protected override void Awake()
     {
         base.Awake();
@@ -61,6 +63,7 @@ public class GameProgressManager : Singleton<GameProgressManager>
         {
             _enemyProgresses[enemyID].isClear = isClear;
             _lastEnemyProgress = enemyID;
+            OnUpdateProgress?.Invoke();
         }
         else
         {
@@ -74,5 +77,10 @@ public class GameProgressManager : Singleton<GameProgressManager>
             SetCheckPoint(_lastEnemyProgress, _enemyProgresses[_lastEnemyProgress].checkPointTrigger.CheckPointTransform.position);
             LoadCheckPoint();
         }
+    }
+
+    public bool GetEnemyProgress(int enemyID)
+    {
+        return _enemyProgresses[enemyID].isClear;
     }
 }

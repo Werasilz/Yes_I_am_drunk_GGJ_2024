@@ -6,9 +6,12 @@ public class SetActiveWithCheckPoint : MonoBehaviour
 
     void Start()
     {
-        if (GameProgressManager.Instance.CheckPointID == checkPointIDTarget)
+        GameProgressManager.Instance.OnUpdateProgress += () =>
         {
-            gameObject.SetActive(false);
-        }
+            if (GameProgressManager.Instance.CheckPointID == checkPointIDTarget && GameProgressManager.Instance.GetEnemyProgress(checkPointIDTarget))
+            {
+                gameObject.SetActive(false);
+            }
+        };
     }
 }

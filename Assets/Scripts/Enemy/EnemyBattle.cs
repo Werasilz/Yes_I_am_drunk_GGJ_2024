@@ -10,7 +10,7 @@ public class EnemyBattle : MonoBehaviour
     [SerializeField] private GameObject[] _characters;
 
 
-    void Start()
+    public void SetCharacter()
     {
         _enemyProfile = GameManager.Instance.battleEnemyProfile;
         _characters[_enemyProfile.ID].SetActive(true);

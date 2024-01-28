@@ -6,6 +6,7 @@ using DG.Tweening;
 [System.Serializable]
 public class ProfileAnimate
 {
+    public float startValue;
     public float target;
     public float duration;
 }
@@ -50,65 +51,73 @@ public class PostProcessManager : SceneSingleton<PostProcessManager>
         }
     }
 
-    public void Execute()
+    public void Execute(bool isReset)
     {
         print("Execute Post Process");
-        SetChromaticAberration();
-        SetLensDistortion();
-        SetVignette();
-        SetDepthOfField();
+        SetChromaticAberration(isReset);
+        SetLensDistortion(isReset);
+        SetVignette(isReset);
+        SetDepthOfField(isReset);
     }
 
 
     [ContextMenu("SetChromaticAberration")]
-    public void SetChromaticAberration()
+    public void SetChromaticAberration(bool isReset)
     {
         float value = _chromaticAberration.intensity.value;
-        DOTween.To(() => value, x => value = x, _chromaticAberrationIntensity.target, _chromaticAberrationIntensity.duration).OnUpdate(() =>
+        float target = isReset == true ? _chromaticAberrationIntensity.startValue : _chromaticAberrationIntensity.target;
+
+        DOTween.To(() => value, x => value = x, target, _chromaticAberrationIntensity.duration).OnUpdate(() =>
         {
             _chromaticAberration.intensity.value = value;
         }).OnComplete(() =>
         {
-            _chromaticAberration.intensity.value = _chromaticAberrationIntensity.target;
+            _chromaticAberration.intensity.value = target;
         });
     }
 
     [ContextMenu("SetLensDistortion")]
-    public void SetLensDistortion()
+    public void SetLensDistortion(bool isReset)
     {
         float value = _lensDistortion.intensity.value;
-        DOTween.To(() => value, x => value = x, _lensDistortionIntensity.target, _lensDistortionIntensity.duration).OnUpdate(() =>
+        float target = isReset == true ? _lensDistortionIntensity.startValue : _lensDistortionIntensity.target;
+
+        DOTween.To(() => value, x => value = x, target, _lensDistortionIntensity.duration).OnUpdate(() =>
         {
             _lensDistortion.intensity.value = value;
         }).OnComplete(() =>
         {
-            _lensDistortion.intensity.value = _lensDistortionIntensity.target;
+            _lensDistortion.intensity.value = target;
         });
     }
 
     [ContextMenu("SetVignette")]
-    public void SetVignette()
+    public void SetVignette(bool isReset)
     {
         float value = _vignette.intensity.value;
-        DOTween.To(() => value, x => value = x, _vignetteIntensity.target, _vignetteIntensity.duration).OnUpdate(() =>
+        float target = isReset == true ? _vignetteIntensity.startValue : _vignetteIntensity.target;
+
+        DOTween.To(() => value, x => value = x, target, _vignetteIntensity.duration).OnUpdate(() =>
         {
             _vignette.intensity.value = value;
         }).OnComplete(() =>
         {
-            _vignette.intensity.value = _vignetteIntensity.target;
+            _vignette.intensity.value = target;
         });
     }
 
     [ContextMenu("SetDepthOfField")]
-    public void SetDepthOfField()
+    public void SetDepthOfField(bool isReset)
     {
         float value = _depthOfField.gaussianEnd.value;
-        DOTween.To(() => value, x => value = x, _depthOfFieldEnd.target, _depthOfFieldEnd.duration).OnUpdate(() =>
+        float target = isReset == true ? _depthOfFieldEnd.startValue : _depthOfFieldEnd.target;
+
+        DOTween.To(() => value, x => value = x, target, _depthOfFieldEnd.duration).OnUpdate(() =>
         {
             _depthOfField.gaussianEnd.value = value;
         }).OnComplete(() =>
         {
-            _depthOfField.gaussianEnd.value = _depthOfFieldEnd.target;
+            _depthOfField.gaussianEnd.value = target;
         });
     }
 }

@@ -43,14 +43,17 @@ public class EnemyHealthBar : MonoBehaviour
             {
                 // Win
                 GameProgressManager.Instance.UpdateEnemyProgress(GameManager.Instance.battleEnemyProfile.ID, true);
-                SceneLoaderManager.Instance.LoadExploreGameplay();
             }
             else
             {
                 // Lose
                 GameProgressManager.Instance.UpdateEnemyProgress(GameManager.Instance.battleEnemyProfile.ID, false);
-                SceneLoaderManager.Instance.LoadExploreGameplay();
             }
+
+            UIWindowManager.Instance.CloseAllWindow();
+            BattleManager.Instance.EndBattle();
+            GameManager.Instance.Reset();
+            PlayerTrigger.Instance.ClearEnemy();
         }
     }
 

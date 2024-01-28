@@ -14,6 +14,7 @@ public class PlayerTrigger : MonoBehaviour
 
     [Header("Delay")]
     [SerializeField] private float _delayToShowVersusCanvas = 1f;
+    [SerializeField] private float _delayToFadeIn = 1f;
     [SerializeField] private float _delayToLoadBattleScene = 3f;
 
     private Animator _animator;
@@ -86,12 +87,17 @@ public class PlayerTrigger : MonoBehaviour
         }
     }
 
+    public void ClearEnemy()
+    {
+        _currentEnemyTrigger = null;
+    }
+
     private void PrepareBattle(Profile enemyProfile)
     {
         print($"PrepareBattle Enemy ID:{_currentEnemyTrigger.EnemyProfile.ID}");
         GameManager.Instance.battleEnemyProfile = _currentEnemyTrigger.EnemyProfile;
 
-        PostProcessManager.Instance.Execute();
+        PostProcessManager.Instance.Execute(false);
 
         DOVirtual.DelayedCall(_delayToShowVersusCanvas, () =>
         {
@@ -101,9 +107,19 @@ public class PlayerTrigger : MonoBehaviour
             VersusUIController.Instance.SetCanvasGroupAlpha(1);
         }).OnComplete(() =>
         {
-            DOVirtual.DelayedCall(_delayToLoadBattleScene, () =>
+            DOVirtual.DelayedCall(_delayToFadeIn, () =>
             {
-                SceneLoaderManager.Instance.LoadBattleScene();
+                FadeUIController.Instance.FadeIn();
+            }).OnComplete(() =>
+            {
+                DOVirtual.DelayedCall(_delayToLoadBattleScene, () =>
+                {
+                    BattleManager.Instance.StartBattle();
+                    FadeUIController.Instance.FadeOut();
+                    VersusUIController.Instance.SetActiveContent(false);
+                    PostProcessManager.Instance.Execute(true);
+                    StarterAssetsInputs.Instance.SetCursorState(false);
+                });
             });
         });
     }
