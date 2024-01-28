@@ -53,7 +53,7 @@ MonoBehaviour:
     _name: LV_LoadingScene
     _path: Assets/Scenes/LV_LoadingScene.unity
     _buildIndex: 0
-  - _sceneOB: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+  - _sceneOB: {fileID: 102900000, guid: 186454276e8c86d41907039ec7a622a0, type: 3}
     _name: LV_MainMenu
     _path: Assets/Scenes/LV_MainMenu.unity
     _buildIndex: 1
