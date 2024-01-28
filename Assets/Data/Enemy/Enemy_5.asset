@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 5
   profileName: Bob Jr.
-  dialogue: Stop right there criminal scum
+  dialogue: '!$)%)&+_@*#'
   sprite: {fileID: 21300000, guid: 14be05fced835c841826582153382561, type: 3}
   turnLimit: 6
   health: 10
