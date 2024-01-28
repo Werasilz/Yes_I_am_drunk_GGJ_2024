@@ -1339,8 +1339,8 @@ MonoBehaviour:
   _playerProfile: {fileID: 11400000, guid: 57ec485d193bb674bbbc0bbc15df7670, type: 2}
   _currentEnemyTrigger: {fileID: 0}
   _delayToShowVersusCanvas: 1
-  _delayToFadeIn: 1
-  _delayToLoadBattleScene: 3
+  _delayToFadeIn: 1.5
+  _delayToLoadBattleScene: 2
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0

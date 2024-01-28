@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Lab1;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
@@ -58,7 +59,8 @@ public class EnemyHealthBar : MonoBehaviour
     {
         currrentHealth = newHealth;
 
-        fill.fillAmount = (float)currrentHealth / (float)targetHealth;
+        float target = (float)currrentHealth / (float)targetHealth;
+        DOTween.To(() => fill.fillAmount, x => fill.fillAmount = x, target, 0.1f).SetEase(Ease.InOutBounce);
 
         if (currrentHealth >= targetHealth)
         {

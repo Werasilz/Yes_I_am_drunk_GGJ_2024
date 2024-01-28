@@ -220,6 +220,9 @@ MonoBehaviour:
   _battleCamera: {fileID: 740682295344815469}
   duration: 1
   endEase: 4
+  uiGameplayManager: {fileID: 0}
+  player: {fileID: 0}
+  enemyHealth: {fileID: 0}
 --- !u!1 &3456140276298668623
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +309,9 @@ MonoBehaviour:
   - {fileID: 6226473441316783721}
   - {fileID: 221578792687000398}
   - {fileID: 5714841171346083008}
+  - {fileID: 4706477299655951009}
+  - {fileID: 4706477299655951009}
+  - {fileID: 4706477299655951009}
   - {fileID: 4706477299655951009}
 --- !u!1 &4363315246058981477
 GameObject:
