@@ -57,8 +57,14 @@ public class GameProgressManager : Singleton<GameProgressManager>
 
     public void UpdateEnemyProgress(int enemyID, bool isClear)
     {
-        _enemyProgresses[enemyID].isClear = isClear;
-        _lastEnemyProgress = enemyID;
+        if (isClear)
+        {
+            _enemyProgresses[enemyID].isClear = isClear;
+            _lastEnemyProgress = enemyID;
+        }
+        else
+        {
+        }
     }
 
     public void CheckEnemyProgress()
