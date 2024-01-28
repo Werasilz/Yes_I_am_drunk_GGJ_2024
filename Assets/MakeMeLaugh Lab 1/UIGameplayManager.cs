@@ -33,6 +33,9 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
         turnCounter.InitializeTurnLimit(GameManager.Instance.battleEnemyProfile.turnLimit);
         OnDisplayValue?.Invoke(0, "0", "0", "0", "0");
         ClearHintText();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void Update()

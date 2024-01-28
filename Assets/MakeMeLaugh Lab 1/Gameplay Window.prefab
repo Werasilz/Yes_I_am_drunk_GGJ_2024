@@ -120,7 +120,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1284,6 +1284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3114081089097075880}
+  - component: {fileID: 897568989233270381}
   m_Layer: 5
   m_Name: EnemyHealthBar
   m_TagString: Untagged
@@ -1313,6 +1314,22 @@ RectTransform:
   m_AnchoredPosition: {x: -400, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &897568989233270381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575407570157065881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9077a4fc0103694da3033466c56b061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1245575229719973468}
+  targetHealth: 0
+  currrentHealth: 0
+  fill: {fileID: 3503123509138545282}
 --- !u!1 &2973385294361764609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,7 +4425,7 @@ PrefabInstance:
     - target: {fileID: 3203134220800800654, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3203134220800800654, guid: 5e1a1039052fd3449aaade2f00c98015,
         type: 3}
