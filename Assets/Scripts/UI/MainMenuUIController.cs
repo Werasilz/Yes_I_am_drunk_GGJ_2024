@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,5 +14,9 @@ public class MainMenuUIController : MonoBehaviour
         {
             SceneLoaderManager.Instance.LoadExploreGameplay();
         });
+
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

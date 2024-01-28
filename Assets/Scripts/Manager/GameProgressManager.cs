@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [System.Serializable]
@@ -67,10 +68,28 @@ public class GameProgressManager : Singleton<GameProgressManager>
             _lastEnemyProgress = enemyID;
 
             OnUpdateProgress?.Invoke();
+
+            if (enemyID == 3)
+            {
+                //
+                GameManager.Instance.Reset();
+                ResetProgress();
+                SceneLoaderManager.Instance.LoadMainMenu();
+            }
         }
         else
         {
 
+        }
+    }
+
+    private void ResetProgress()
+    {
+        _checkPointID = 0;
+        _lastEnemyProgress = 0;
+        for (int i = 0; i < _enemyProgresses.Length; i++)
+        {
+            _enemyProgresses[i].isClear = false;
         }
     }
 
