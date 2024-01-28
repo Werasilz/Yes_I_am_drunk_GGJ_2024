@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenuUIController : MonoBehaviour
 {
     [SerializeField] private Button _startButton;
+    [SerializeField] private Button _exitButton;
 
     private void Start()
     {
@@ -15,6 +16,10 @@ public class MainMenuUIController : MonoBehaviour
             SceneLoaderManager.Instance.LoadExploreGameplay();
         });
 
+        _exitButton.onClick.AddListener(() =>
+         {
+             Application.Quit();
+         });
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
