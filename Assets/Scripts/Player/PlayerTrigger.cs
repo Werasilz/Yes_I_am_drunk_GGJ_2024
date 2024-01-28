@@ -23,9 +23,12 @@ public class PlayerTrigger : MonoBehaviour
         Instance = this;
         _animator = GetComponent<Animator>();
         _animator.CrossFade("StandUp", 0.1f);
+    }
 
+    private void Start()
+    {
         GameManager.Instance.isStopPlayerMove = true;
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(4f, () =>
         {
             GameManager.Instance.isStopPlayerMove = false;
         });
