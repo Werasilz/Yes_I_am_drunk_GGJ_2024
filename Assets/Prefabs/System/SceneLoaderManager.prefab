@@ -61,8 +61,8 @@ MonoBehaviour:
     _name: LV_ExploreGameplay
     _path: Assets/Scenes/LV_ExploreGameplay.unity
     _buildIndex: 2
-  - _sceneOB: {fileID: 102900000, guid: e2b08f8994e7c6f48a95fb5f62b62344, type: 3}
-    _name: Battle Scene
-    _path: 
-    _buildIndex: -1
+  - _sceneOB: {fileID: 102900000, guid: ead3e305454bc154ab45a2fa6ebefcc3, type: 3}
+    _name: LV_BattleScene
+    _path: Assets/Scenes/LV_BattleScene.unity
+    _buildIndex: 3
   _currentActiveScene: 0
