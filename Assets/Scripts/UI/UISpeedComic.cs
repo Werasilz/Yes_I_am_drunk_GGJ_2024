@@ -9,6 +9,12 @@ public class UISpeedComic : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.isStopPlayerMove)
+        {
+            speedComic.SetActive(false);
+            return;
+        }
+
         speedComic.SetActive(StarterAssetsInputs.Instance.sprint);
     }
 }
