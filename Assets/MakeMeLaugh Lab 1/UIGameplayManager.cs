@@ -1,3 +1,4 @@
+using Lab1;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
 
     public static System.Action<int, string, string, string, string> OnDisplayValue = delegate { };
     [SerializeField] private float arrowLerpSpeed;
+    [SerializeField] Player player;
 
     [Header("Hint")]
     public TMP_Text hintPersistText;
@@ -24,12 +26,12 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
         base.Awake();
 
         OnDisplayValue += DisplayCalculatedValue;
-        turnCounter.InitializeTurnLimit(GameManager.Instance.battleEnemyProfile.turnLimit);
     }
 
     private void Start()
     {
-        DisplayCalculatedValue(1, "0", "0", "0", "0");
+        turnCounter.InitializeTurnLimit(GameManager.Instance.battleEnemyProfile.turnLimit);
+        OnDisplayValue?.Invoke(0, "0", "0", "0", "0");
         ClearHintText();
     }
 
@@ -53,7 +55,18 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
 
     public void ClearHintText()
     {
-        hintPersistText.text = string.Empty;
+        if (player.playedCardDatas.Count - 1 >= 0)
+        {
+            hintPersistText.text = player.playedCardDatas[player.playedCardDatas.Count - 1].persistantValue.ToString();
+            valueTexts[0].persistantValueText.text = player.playedCardDatas[player.playedCardDatas.Count - 1].persistantValue.ToString();
+        }
+        else
+        {
+
+            hintPersistText.text = player.startPersistantValue.ToString();
+            valueTexts[0].persistantValueText.text = player.startPersistantValue.ToString();
+        }
+
         valueTexts[0].stackBonusValueText.text = "0";
         valueTexts[0].calculateValueText.text = "0";
     }

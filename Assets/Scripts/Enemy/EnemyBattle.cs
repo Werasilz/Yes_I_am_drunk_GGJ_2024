@@ -14,6 +14,5 @@ public class EnemyBattle : MonoBehaviour
     {
         _enemyProfile = GameManager.Instance.battleEnemyProfile;
         _characters[_enemyProfile.ID].SetActive(true);
-        GameManager.Instance.battleEnemyProfile = null;
     }
 }

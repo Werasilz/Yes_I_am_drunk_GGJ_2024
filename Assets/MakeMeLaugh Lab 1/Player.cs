@@ -16,7 +16,7 @@ namespace Lab1
         public bool isPlayer;
 
         // ! Debuggg
-        private float startPersistantValue = 1f;
+        [HideInInspector] public float startPersistantValue = 1f;
         private float eachCardScore = 1f;
         private float addPersistanceValue = 1f;
 
@@ -109,19 +109,19 @@ namespace Lab1
             // Setup Persistant Value
             playedData.persistantValue = (cardDataIndex == -1) ? startPersistantValue : playedCardDatas[cardDataIndex].persistantValue;
 
-            float hintPersist = 0f;
+            float hintPersist = playedData.persistantValue;
             float hintStack = 0f;
             float hintSummary = 0f;
 
             if (NeedToAddPersistantValue())
             {
                 // Show Hint persist score
-                hintPersist = playedData.persistantValue + 1;
-                UIGameplayManager.Instance.valueTexts[0].persistantValueText.text = $"+{hintPersist}";
+                hintPersist += addPersistanceValue;
+                UIGameplayManager.Instance.valueTexts[0].persistantValueText.text = $"{playedData.persistantValue}(+{addPersistanceValue})";
             }
             else
             {
-                UIGameplayManager.Instance.valueTexts[0].persistantValueText.text = string.Empty;
+                UIGameplayManager.Instance.valueTexts[0].persistantValueText.text = (playedCardDatas.Count == 0) ? startPersistantValue.ToString() : playedCardDatas[playedCardDatas.Count - 1].persistantValue.ToString();
             }
 
             // Show Hint stack score
@@ -129,7 +129,7 @@ namespace Lab1
             UIGameplayManager.Instance.valueTexts[0].stackBonusValueText.text = hintStack.ToString();
 
             // Setup Calculate Value
-            hintSummary = playedData.persistantValue + hintStack;
+            hintSummary = hintPersist + hintStack;
             UIGameplayManager.Instance.valueTexts[0].calculateValueText.text = hintSummary.ToString();
         }
 
