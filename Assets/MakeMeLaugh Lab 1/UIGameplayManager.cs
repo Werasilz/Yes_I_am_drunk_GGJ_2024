@@ -102,6 +102,8 @@ public class TurnCounter
 
         if (isEndByFullScore || isEndByTurnLimit)
             OnTurnUpdated?.Invoke(true);
+        else
+            OnTurnUpdated?.Invoke(false);
     }
 
     public void UpdateTurnUI()
