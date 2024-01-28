@@ -29,6 +29,7 @@ namespace StarterAssets
 		private void Awake()
 		{
 			Instance = this;
+			StarterAssetsInputs.Instance.SetCursorState(!GameManager.Instance.isBeginBattle);
 		}
 
 		private void OnEnable()
