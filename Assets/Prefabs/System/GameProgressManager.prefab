@@ -65,6 +65,9 @@ MonoBehaviour:
   - enemyID: 3
     isClear: 0
     checkPointTrigger: {fileID: 5659835585236308236}
+  - enemyID: 4
+    isClear: 0
+    checkPointTrigger: {fileID: 0}
 --- !u!1001 &2827773465842928576
 PrefabInstance:
   m_ObjectHideFlags: 0

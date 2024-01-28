@@ -14,7 +14,7 @@ namespace Lab1
         public bool selected = false;
         [SerializeField] Image currentImage;
         [SerializeField] Image currentColor;
-        [SerializeField] GameObject highLightColor;
+        public GameObject highLightColor;
 
         bool isDelay1;
         bool isDelay2;

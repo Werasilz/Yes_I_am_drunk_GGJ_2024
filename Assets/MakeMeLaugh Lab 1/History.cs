@@ -12,7 +12,7 @@ namespace Lab1
         public List<CardData> historyCardDatas;
         public Image[] historyImages;
 
-        private void Start()
+        private void Initialize()
         {
             lastRoundText.gameObject.SetActive(false);
 

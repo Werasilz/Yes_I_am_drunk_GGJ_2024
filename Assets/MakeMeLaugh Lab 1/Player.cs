@@ -24,18 +24,16 @@ namespace Lab1
 
         // ! Debuggg
 
-        private void Start()
-        {
-            deck.IntializeDeck();
-
-            Initialize();
-
-        }
-
         public void Initialize()
         {
+            playedCardDatas = new List<PlayedCardData>();
+            DeselectAllCard();
+
+            deck.IntializeDeck();
+
             for (int i = 0; i < CardHandleOnHand.Count; i++)
             {
+                CardHandleOnHand[i].highLightColor.SetActive(false);
                 CardData data = deck.DrawCard();
                 CardHandleOnHand[i].InitalizeNewCardData(data);
             }

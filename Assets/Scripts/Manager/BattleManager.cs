@@ -1,5 +1,6 @@
 using Cinemachine;
 using DG.Tweening;
+using Lab1;
 using UnityEngine;
 
 public class BattleManager : SceneSingleton<BattleManager>
@@ -26,6 +27,11 @@ public class BattleManager : SceneSingleton<BattleManager>
     public float duration = 1;
     public Ease endEase;
 
+    [Header("Initialize Component")]
+    public UIGameplayManager uiGameplayManager;
+    public Player player;
+    public EnemyHealthBar enemyHealth;
+
     [ContextMenu("StartBattle")]
     public void StartBattle()
     {
@@ -42,6 +48,11 @@ public class BattleManager : SceneSingleton<BattleManager>
             enemyTransform.DODynamicLookAt(playerTransform.position, 1f).OnComplete(() =>
             {
                 UIWindowManager.Instance.OpenWindow("Gameplay");
+
+                // Initialize all Gameplay
+                uiGameplayManager.Initialize();
+                player.Initialize();
+                enemyHealth.IntializeHealth();
             });
         });
     }

@@ -12,7 +12,7 @@ namespace Lab1
 
         public void IntializeDeck()
         {
-            currentDeck.AddRange(cardDeck);
+            currentDeck = new List<CardData>(cardDeck);
             ShuffleDeck();
         }
 
@@ -42,7 +42,8 @@ namespace Lab1
 
             if (currentDeck.Count == 0)
             {
-                IntializeDeck();
+                currentDeck.AddRange(cardDeck);
+                ShuffleDeck();
             }
 
             _drawCardData = currentDeck[0];

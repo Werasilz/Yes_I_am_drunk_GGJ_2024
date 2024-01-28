@@ -28,7 +28,7 @@ public class UIGameplayManager : SceneSingleton<UIGameplayManager>
         OnDisplayValue += DisplayCalculatedValue;
     }
 
-    private void Start()
+    public void Initialize()
     {
         turnCounter.InitializeTurnLimit(GameManager.Instance.battleEnemyProfile.turnLimit);
         OnDisplayValue?.Invoke(0, "0", "0", "0", "0");
@@ -86,6 +86,7 @@ public class TurnCounter
 
     public void InitializeTurnLimit(int turnLimit)
     {
+        currentTurn = 1;
         this.turnLimit = turnLimit;
         UpdateTurnUI();
     }

@@ -16,4 +16,5 @@ MonoBehaviour:
   <CardDescription>k__BackingField: 
   <CardType>k__BackingField: 3
   <CardColor>k__BackingField: {r: 1, g: 0.94810414, b: 0.4509434, a: 1}
-  <CardImage>k__BackingField: {fileID: 0}
+  <CardImage>k__BackingField: {fileID: 21300000, guid: d68d0d12384a08b42a62bd89f36ded95,
+    type: 3}

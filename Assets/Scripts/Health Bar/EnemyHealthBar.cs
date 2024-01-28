@@ -12,6 +12,8 @@ public class EnemyHealthBar : MonoBehaviour
     public int targetHealth;
     public int currrentHealth;
     public Image fill;
+
+    
     public void IntializeHealth()
     {
         targetHealth = GameManager.Instance.battleEnemyProfile.health;
@@ -21,11 +23,6 @@ public class EnemyHealthBar : MonoBehaviour
     private void Awake()
     {
         TurnCounter.OnTurnUpdated += OnHealthUpdatedEachTurnCheck;
-    }
-
-    private void Start()
-    {
-        IntializeHealth();
     }
 
     private void OnDestroy()

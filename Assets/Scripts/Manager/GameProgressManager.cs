@@ -59,14 +59,19 @@ public class GameProgressManager : Singleton<GameProgressManager>
 
     public void UpdateEnemyProgress(int enemyID, bool isClear)
     {
+        if (_enemyProgresses[enemyID].checkPointTrigger == null) return;
+
         if (isClear)
         {
+
             _enemyProgresses[enemyID].isClear = isClear;
             _lastEnemyProgress = enemyID;
+
             OnUpdateProgress?.Invoke();
         }
         else
         {
+
         }
     }
 
